@@ -1,0 +1,2059 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+Disclaimer
+	
+U dient er rekening mee te houden dat de XML die u hier download, onaangekondigd, gewijzigd kan worden.
+De wijzigingen kunnen onder andere bestaan uit uitbreiding van nieuwe velden, verwijderen van bestaande velden of wijziging van de inhoud van de bestaande velden.
+U dient uw code voor de verwerking van deze XML dan ook zo in te richten dat de eventuele wijzigingen in de XML genegeerd worden.
+Met het gebruik van deze dienst geeft u aan dat uw verwerking van deze XML aan deze voorwaarde voldoet en dat u hiermee akkoord bent.
+	
+Belangrijke informatie:
+- XML bestand dient via https te worden ingelezen
+- XML bestand is een zipbestand en dient door de ISP-er unzipt te worden  
+- XML bestand wordt gegenereerd op het moment dat het wordt aangeroepen
+- XML bestand bevat alle aanmeldingen, wijzigingen en afmeldingen van de dag ervoor
+- XML bestand per vestiging of als geheel dient maximaal 1 keer per etmaal aangeroepen te worden (na 8.30 's ochtends). 
+  Bij overtreding van deze restrictie wordt de koppeling direct stopgezet. 
+  De eventuele kosten (onder andere heractivering) en de schade welke hieruit voortvloeit is voor de rekening van de ISP-er
+- De objecten uit de XML koppeling mogen alleen worden gebruikt ten behoeve van publicatie op de website van de makelaar. 
+  Voor het gebruik voor andere doeleinde is te allen tijden schriftelijke toestemming van ons noodzakelijk. 
+  Bij overtreding van deze restrictie wordt de koppeling direct stopgezet. 
+  De eventuele kosten (onder andere heractivering) en de schade welke hieruit voortvloeit is voor de rekening van de ISP-er.
+- Objecten worden tot 7 dagen na afmelding meegegeven in de koppeling
+- In status worden ook de data datein en lastupdate meegegeven. 
+  Hiermee kan de ISP-er achterhalen welke records er geupdate dienen te worden
+- Alle media (afbeeldingen; plattegronden; brochures; etc) wordt als link meegestuurd.
+- Alle media dient naar eigen server overgekopieerd te worden. 
+  Het is niet toegestaan om de links in de koppeling te gebruiken voor de publicatie van de afbeeldingen en plattegronden. 
+  Bij overtreding van deze restrictie wordt de koppeling direct stopgezet. 
+  De eventuele kosten (onder andere heractivering) en de schade welke hieruit voortvloeit is voor de rekening van de ISP-er
+- Aan het XML bestand is een schema gekoppeld waar de meest relevante informatie over de mogelijkheden in is gedocumenteerd
+- De XML koppeling voldoet volledig aan XML Schema specificaties van het w3c http://www.w3.org/standards/xml/schema 
+ -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	
+	<xs:element name="ObjectenLijst">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="Project" />
+			</xs:sequence>
+			<xs:attribute name="TimeStamp" type="xs:string" use="required" />
+			<xs:attribute name="Versie" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="12" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Project">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="NVMVestigingNR">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="\d{5}" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ObjectCompany" type="xs:string" minOccurs="0" />
+				<xs:element name="ObjectAfdeling" type="xs:string" minOccurs="0" />
+				<xs:element name="ObjectTiaraID" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ObjectSystemID" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ObjectCode" type="xs:string" minOccurs="0" />
+				<xs:element ref="ProjectDetails" />
+				<xs:element ref="MediaLijst" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="BouwType" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="BouwType">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="NVMVestigingNR">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="\d{5}" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ObjectAfdeling" type="xs:string" minOccurs="0" />
+				<xs:element name="ObjectTiaraID" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ObjectSystemID" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ObjectCode" type="xs:string" minOccurs="0" />
+				<xs:element ref="BouwTypeDetails" />
+				<xs:element ref="MediaLijst" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="BouwNummer" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="BouwNummer">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="NVMVestigingNR">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="\d{5}" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ObjectAfdeling" type="xs:string" minOccurs="0" />
+				<xs:element name="ObjectTiaraID" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ObjectSystemID" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ObjectCode" type="xs:string" minOccurs="0" />
+				<xs:element ref="BouwNummerDetails" />
+				<xs:element ref="MediaLijst" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="ProjectDetails">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Projectnaam">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+							<xs:maxLength value="80" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Adres">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Postcode">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1" />
+										<xs:maxLength value="10" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Woonplaats">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1" />
+										<xs:maxLength value="24" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DatumInvoer">
+					<xs:simpleType>
+						<xs:restriction base="xs:date" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DatumWijziging" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:date" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DatumStartBouw" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:date" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="OmschrijvingStartBouw" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+							<xs:maxLength value="40" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DatumOpleveringVanaf" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:date" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="OmschrijvingOpleveringVanaf" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+							<xs:maxLength value="40" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Maten">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Inhoud">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Van" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:totalDigits value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TotEnMet" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:totalDigits value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Woonoppervlakte">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Van" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:totalDigits value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TotEnMet" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:totalDigits value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Perceeloppervlakte" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Van">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:totalDigits value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TotEnMet">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:totalDigits value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Presentatie">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Aanbiedingstekst">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1" />
+										<xs:maxLength value="10000" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Website" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1" />
+										<xs:maxLength value="255" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Omgeving" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1" />
+										<xs:maxLength value="4000" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="FinancieleGegevens" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element minOccurs="0" maxOccurs="1" ref="KoopAanneemsom" />
+							<xs:element minOccurs="0" maxOccurs="1" ref="Huurprijs" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="BouwTypeDetails">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Naam">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+							<xs:maxLength value="80" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DatumInvoer">
+					<xs:simpleType>
+						<xs:restriction base="xs:date" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DatumWijziging" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:date" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="AantalEenheden" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="4" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="AantalVrijeEenheden">
+					<xs:simpleType>
+						<xs:restriction base="xs:nonNegativeInteger">
+							<xs:totalDigits value="4" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DatumStartBouw" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:date" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="OmschrijvingStartBouw" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+							<xs:maxLength value="40" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DatumOpleveringVanaf" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:date" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="OmschrijvingOpleveringVanaf" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+							<xs:maxLength value="40" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Inschrijfvoorwaarden" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+							<xs:maxLength value="4000" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Wachttijd" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="± ½ jaar" />
+							<xs:enumeration value="± 1 jaar" />
+							<xs:enumeration value="direct beschikbaar" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Maten">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Inhoud">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Van">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:totalDigits value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TotEnMet">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:totalDigits value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Woonoppervlakte">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Van">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:totalDigits value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TotEnMet">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:totalDigits value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Perceeloppervlakte" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Van">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:totalDigits value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TotEnMet">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:totalDigits value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Woonkameroppervlakte" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Van">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:totalDigits value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TotEnMet">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:totalDigits value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Aanbiedingstekst">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+							<xs:maxLength value="10000" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="FinancieleGegevens">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element ref="KoopAanneemsom" />
+							<xs:element ref="Huurprijs" />
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="BouwNummerDetails">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Adres" />
+				<xs:element ref="Financieel" />
+				<xs:element name="DatumInvoer">
+					<xs:simpleType>
+						<xs:restriction base="xs:date" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DatumWijziging" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:date" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element ref="Status" />
+				<xs:element name="Aanbiedingstekst">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="10000" />
+							<xs:minLength value="1" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element ref="Wonen" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+				
+	<xs:element name="Adres">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Straatnaam">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="43" />
+							<xs:minLength value="1" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Huisnummer">
+					<xs:simpleType>
+						<xs:restriction base="xs:nonNegativeInteger">
+							<xs:totalDigits value="5" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="HuisnummerToevoeging" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="7" />
+							<xs:minLength value="1" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Postcode">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="10" />
+							<xs:minLength value="1" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Woonplaats">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="24" />
+							<xs:minLength value="1" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>		
+	
+	<xs:element name="Status">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ObjectStatus" >
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Beschikbaar" />
+							<xs:enumeration value="Onder bod" />
+							<xs:enumeration value="Onder optie" />
+							<xs:enumeration value="Verkocht onder voorbehoud" />
+							<xs:enumeration	value="Verhuurd onder voorbehoud" />
+							<xs:enumeration value="Verhuurd" />
+							<xs:enumeration value="Verkocht" />
+							<xs:enumeration value="Ingetrokken" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DatumVoorbehoudTot" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:date" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="TransactieDatum" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:date" />
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Financieel">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Koop" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Koopprijs" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:positiveInteger">
+										<xs:totalDigits value="9" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="KoopConditie" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="kosten koper" />
+										<xs:enumeration value="vrij op naam" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="KoopSpecificatie" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="exclusief bouwrente" />
+										<xs:enumeration value="BTW belast" />
+										<xs:enumeration value="inclusief BTW" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="WOZ" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="WOZWaarde">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:totalDigits value="9" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="WOZWaardePeildatum">
+											<xs:simpleType>
+												<xs:restriction base="xs:date" />
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Huur" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Huurprijs">
+								<xs:simpleType>
+									<xs:restriction base="xs:positiveInteger">
+										<xs:totalDigits value="9" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="HuurConditie">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="per maand" />
+										<xs:enumeration value="per jaar" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="HuurSpecificatie" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="BTW belast" />
+										<xs:enumeration value="geindexeerd" />
+										<xs:enumeration value="gemeubileerd" />
+										<xs:enumeration value="inclusief servicekosten" />
+										<xs:enumeration value="exclusief servicekosten" />
+										<xs:enumeration value="gestoffeerd" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ServicekostenPerMaand" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+			
+	<xs:element name="Wonen">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Details">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="MatenEnLigging" />
+							<xs:element ref="Installatie" minOccurs="0" />
+							<xs:element ref="Tuin" minOccurs="0" />
+							<xs:element ref="SchuurBerging" minOccurs="0" />
+							<xs:element ref="Garage" minOccurs="0" />
+							<xs:element ref="Diversen" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:choice>
+					<xs:element ref="Woonhuis" />
+					<xs:element ref="Appartement" />
+				</xs:choice>
+				<xs:element name="Verdiepingen" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Aantal" type="xs:integer" />
+							<xs:element name="AantalKamers" type="xs:integer" />
+							<xs:element name="AantalSlaapKamers" type="xs:integer" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Woonlagen" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Kelder" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="VerdiepingNr">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="-1" />
+													<xs:totalDigits value="2" />
+													<xs:maxInclusive value="-1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Naam" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1" />
+													<xs:maxLength value="25" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AantalKamers">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="-1" />
+													<xs:totalDigits value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AantalSlaapkamers" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:nonNegativeInteger">
+													<xs:totalDigits value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Woonkamer" type="WoonkamerType" minOccurs="0" />
+										<xs:element name="Keuken" type="KeukenType" minOccurs="0" />
+										<xs:element name="Badkamer" type="BadkamerType" minOccurs="0" maxOccurs="2" /> 
+										<xs:element name="OverigeRuimten" type="OverigeRuimtenType" minOccurs="0" />
+										<xs:element name="Ligging" type="LiggingType" minOccurs="0" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="BeganeGrondOfFlat">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="VerdiepingNr">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="0" />
+													<xs:totalDigits value="2" />
+													<xs:maxInclusive value="0" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Naam" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1" />
+													<xs:maxLength value="25" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AantalKamers">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="-1" />
+													<xs:totalDigits value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AantalSlaapkamers" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:nonNegativeInteger">
+													<xs:totalDigits value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Woonkamer" type="WoonkamerType" minOccurs="0" />
+										<xs:element name="Keuken" type="KeukenType" minOccurs="0" />
+										<xs:element name="Badkamer" type="BadkamerType" minOccurs="0" maxOccurs="2" />
+										<xs:element name="OverigeRuimten" type="OverigeRuimtenType" minOccurs="0" />										
+										<xs:element name="Ligging" type="LiggingType" minOccurs="0" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Verdieping" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="VerdiepingNr">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="1" />
+													<xs:totalDigits value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Naam" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1" />
+													<xs:maxLength value="25" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AantalKamers">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="-1" />
+													<xs:totalDigits value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AantalSlaapkamers" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:nonNegativeInteger">
+													<xs:totalDigits value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Woonkamer" type="WoonkamerType" minOccurs="0" />
+										<xs:element name="Keuken" type="KeukenType" minOccurs="0" />
+										<xs:element name="Badkamer" type="BadkamerType" minOccurs="0" maxOccurs="2" />
+										<xs:element name="OverigeRuimten" type="OverigeRuimtenType" minOccurs="0" />
+										<xs:element name="Ligging" type="LiggingType" minOccurs="0" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Zolder" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="VerdiepingNr">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="1" />
+													<xs:totalDigits value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Naam" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1" />
+													<xs:maxLength value="25" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AantalKamers">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="-1" />
+													<xs:totalDigits value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AantalSlaapkamers" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:nonNegativeInteger">
+													<xs:totalDigits value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Woonkamer" type="WoonkamerType" minOccurs="0" />
+										<xs:element name="Keuken" type="KeukenType" minOccurs="0" />
+										<xs:element name="Badkamer" type="BadkamerType" minOccurs="0" maxOccurs="2" />
+										<xs:element name="OverigeRuimten" type="OverigeRuimtenType" minOccurs="0" />
+										<xs:element name="Ligging" type="LiggingType" minOccurs="0" />
+										<xs:element name="ZolderVlieringOpties" type="ZolderVlieringOptiesType" minOccurs="0" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Vliering" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="VerdiepingNr">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="1" />
+													<xs:totalDigits value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Naam" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1" />
+													<xs:maxLength value="25" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AantalKamers">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="-1" />
+													<xs:totalDigits value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AantalSlaapkamers" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:nonNegativeInteger">
+													<xs:totalDigits value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Woonkamer" type="WoonkamerType" minOccurs="0" />
+										<xs:element name="Keuken" type="KeukenType" minOccurs="0" />
+										<xs:element name="Badkamer" type="BadkamerType" minOccurs="0" maxOccurs="2" />
+										<xs:element name="OverigeRuimten" type="OverigeRuimtenType" minOccurs="0" />
+										<xs:element name="Ligging" type="LiggingType" minOccurs="0" />
+										<xs:element name="ZolderVlieringOpties" type="ZolderVlieringOptiesType" minOccurs="0" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>						
+	
+	<xs:element name="MatenEnLigging">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Liggingen" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Ligging" maxOccurs="unbounded">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="aan bosrand" />
+										<xs:enumeration value="aan water" />
+										<xs:enumeration value="aan park" />
+										<xs:enumeration value="aan drukke weg" />
+										<xs:enumeration value="aan rustige weg" />
+										<xs:enumeration value="in centrum" />
+										<xs:enumeration value="in woonwijk" />
+										<xs:enumeration value="vrij uitzicht" />
+										<xs:enumeration value="beschutte ligging" />
+										<xs:enumeration value="open ligging" />
+										<xs:enumeration value="buiten bebouwde kom" />
+										<xs:enumeration value="aan vaarwater"/>
+										<xs:enumeration value="in bosrijke omgeving"/>
+										<xs:enumeration value="landelijk gelegen"/>
+
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Inhoud">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="5" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="TotaleWoonOppervlakte" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="5" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="GebruiksoppervlakteWoonfunctie">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="5" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="GebruiksoppervlakteOverigeFuncties" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="5" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="BuitenruimtesGebouwgebondenOfVrijstaand" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="5" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="PerceelOppervlakte" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="5" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Installatie">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SoortenVerwarming" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Verwarming" maxOccurs="unbounded">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="c.v.-ketel" />
+										<xs:enumeration value="kolenkachel" />
+										<xs:enumeration value="blokverwarming" />
+										<xs:enumeration value="stadsverwarming" />
+										<xs:enumeration value="moederhaard" />
+										<xs:enumeration value="hete lucht verwarming" />
+										<xs:enumeration value="gaskachels" />
+										<xs:enumeration value="open haard" />
+										<xs:enumeration value="mogelijkheid voor open haard" />
+										<xs:enumeration value="vloerverwarming geheel" />
+										<xs:enumeration value="vloerverwarming gedeeltelijk" />
+										<xs:enumeration value="geen verwarming" />
+										<xs:enumeration value="elektrische verwarming" />
+										<xs:enumeration value="muurverwarming" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CVKetel" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CVKetelType" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="50" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Bouwjaar" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:positiveInteger">
+										<xs:totalDigits value="4" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Brandstof" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="gas" />
+										<xs:enumeration value="olie" />
+										<xs:enumeration value="elektrisch" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Eigendom" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="eigendom" />
+										<xs:enumeration value="huur" />
+										<xs:enumeration value="lease" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Combiketel" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="ja" />
+										<xs:enumeration value="nee" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="SoortenWarmWater" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="WarmWater" maxOccurs="3">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="c.v.-ketel" />
+										<xs:enumeration value="centrale voorziening" />
+										<xs:enumeration value="geiser huur" />
+										<xs:enumeration value="geiser eigendom" />
+										<xs:enumeration value="gasboiler huur" />
+										<xs:enumeration value="gasboiler eigendom" />
+										<xs:enumeration value="elektrische boiler huur" />
+										<xs:enumeration value="zonneboiler" />
+										<xs:enumeration value="zonnecollectoren" />
+										<xs:enumeration value="elektrische boiler eigendom" />
+										<xs:enumeration value="geen" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+
+	<xs:element name="Tuin">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Tuintypen">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Tuintype" maxOccurs="unbounded">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="achtertuin" />
+										<xs:enumeration value="voortuin" />
+										<xs:enumeration value="zijtuin" />
+										<xs:enumeration value="tuin rondom" />
+										<xs:enumeration value="patio/atrium" />
+										<xs:enumeration value="plaats" />
+										<xs:enumeration value="geen tuin" />
+										<xs:enumeration value="zonneterras" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Kwaliteit" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="aan te leggen" />
+							<xs:enumeration value="verwaarloosd" />
+							<xs:enumeration value="normaal" />
+							<xs:enumeration value="fraai aangelegd" />
+							<xs:enumeration value="verzorgd" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="TotaleOppervlakte" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="6" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Hoofdtuin" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Type">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="achtertuin" />
+										<xs:enumeration value="voortuin" />
+										<xs:enumeration value="zijtuin" />
+										<xs:enumeration value="tuin rondom" />
+										<xs:enumeration value="patio/atrium" />
+										<xs:enumeration value="plaats" />
+										<xs:enumeration value="geen tuin" />
+										<xs:enumeration value="zonneterras" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Positie" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="noord" />
+										<xs:enumeration value="noordoost" />
+										<xs:enumeration value="oost" />
+										<xs:enumeration value="zuidoost" />
+										<xs:enumeration value="zuid" />
+										<xs:enumeration value="zuidwest" />
+										<xs:enumeration value="west" />
+										<xs:enumeration value="noordwest" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Achterom" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="ja" />
+										<xs:enumeration value="nee" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element ref="Afmetingen" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+					
+	<xs:element name="Garage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Soorten">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Soort" maxOccurs="unbounded">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="geen garage" />
+										<xs:enumeration value="aangebouwd steen" />
+										<xs:enumeration value="aangebouwd hout" />
+										<xs:enumeration value="vrijstaand steen" />
+										<xs:enumeration value="vrijstaand hout" />
+										<xs:enumeration value="inpandig" />
+										<xs:enumeration value="garagebox" />
+										<xs:enumeration value="parkeerkelder" />
+										<xs:enumeration value="garage mogelijk" />
+										<xs:enumeration value="carport" />
+										<xs:enumeration value="parkeerplaats" />
+										<xs:enumeration value="souterrain" />
+										<xs:enumeration value="garage met carport" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+					<xs:unique name="SoortGarage_Uniek">
+						<xs:selector xpath="*" />
+						<xs:field xpath="." />
+					</xs:unique>
+				</xs:element>
+				<xs:element name="Voorzieningen" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Voorziening" maxOccurs="unbounded">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="voorzien van verwarming" />
+										<xs:enumeration value="voorzien van elektra" />
+										<xs:enumeration value="voorzien van water" />
+										<xs:enumeration value="met vliering" />
+										<xs:enumeration value="met elektrische deur" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+					<xs:unique name="OverigOGVoorziening_Uniek_0015">
+						<xs:selector xpath="*" />
+						<xs:field xpath="." />
+					</xs:unique>
+				</xs:element>
+				<xs:element name="Capaciteit" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="2" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element ref="Afmetingen" minOccurs="0" />
+				<xs:element name="Isolatievormen" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Isolatie" maxOccurs="unbounded">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="dakisolatie" />
+										<xs:enumeration value="muurisolatie" />
+										<xs:enumeration value="vloerisolatie" />
+										<xs:enumeration value="dubbel glas" />
+										<xs:enumeration value="gedeeltelijk dubbel glas" />
+										<xs:enumeration value="voorzetramen" />
+										<xs:enumeration value="volledig geïsoleerd" />
+										<xs:enumeration value="geen spouw" />
+										<xs:enumeration value="eco-bouw" />
+										<xs:enumeration value="geen isolatie" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+					<xs:unique name="Isolatie_Uniek_1">
+						<xs:selector xpath="*" />
+						<xs:field xpath="." />
+					</xs:unique>
+				</xs:element>
+				<xs:element name="TotaalAantalGarages" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="2" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+		
+	<xs:element name="SchuurBerging">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Soort">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="aangebouwd steen" />
+							<xs:enumeration value="aangebouwd hout" />
+							<xs:enumeration value="vrijstaand steen" />
+							<xs:enumeration value="vrijstaand hout" />
+							<xs:enumeration value="inpandig" />
+							<xs:enumeration value="box" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Voorzieningen" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Voorziening" maxOccurs="unbounded">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="voorzien van verwarming" />
+										<xs:enumeration value="voorzien van elektra" />
+										<xs:enumeration value="voorzien van water" />
+										<xs:enumeration value="met vliering" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+					<xs:unique name="SBVoorziening_Uniek_0005">
+						<xs:selector xpath="*" />
+						<xs:field xpath="." />
+					</xs:unique>
+				</xs:element>
+				<xs:element name="Isolatievormen" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Isolatie" maxOccurs="unbounded">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="dakisolatie" />
+										<xs:enumeration value="muurisolatie" />
+										<xs:enumeration value="vloerisolatie" />
+										<xs:enumeration value="dubbel glas" />
+										<xs:enumeration value="gedeeltelijk dubbel glas" />
+										<xs:enumeration value="voorzetramen" />
+										<xs:enumeration value="volledig geïsoleerd" />
+										<xs:enumeration value="geen spouw" />
+										<xs:enumeration value="eco-bouw" />
+										<xs:enumeration value="geen isolatie" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+					<xs:unique name="Isolatie_Uniek_2">
+						<xs:selector xpath="*" />
+						<xs:field xpath="." />
+					</xs:unique>
+				</xs:element>
+				<xs:element name="TotaalAantal" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="2" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Diversen" >
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Bijzonderheden" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Bijzonderheid" maxOccurs="unbounded">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="monumentaal pand" />
+										<xs:enumeration value="monument" />
+										<xs:enumeration value="gestoffeerd" />
+										<xs:enumeration value="gedeeltelijk gestoffeerd" />
+										<xs:enumeration value="gedeeltelijk verhuurd" />
+										<xs:enumeration value="gemeubileerd" />
+										<xs:enumeration value="dubbele bewoning mogelijk" />
+										<xs:enumeration value="dubbele bewoning aanwezig" />
+										<xs:enumeration value="beschermd stads- of dorpsgezicht" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+					<xs:unique name="Bijzonderheid_Uniek">
+						<xs:selector xpath="*" />
+						<xs:field xpath="." />
+					</xs:unique>
+				</xs:element>
+				<xs:element name="Isolatievormen" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Isolatie" maxOccurs="unbounded">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="dakisolatie" />
+										<xs:enumeration value="muurisolatie" />
+										<xs:enumeration value="vloerisolatie" />
+										<xs:enumeration value="dubbel glas" />
+										<xs:enumeration value="gedeeltelijk dubbel glas" />
+										<xs:enumeration value="voorzetramen" />
+										<xs:enumeration value="volledig geïsoleerd" />
+										<xs:enumeration value="geen spouw" />
+										<xs:enumeration value="eco-bouw" />
+										<xs:enumeration value="geen isolatie" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+					<xs:unique name="Isolatie_Uniek_3">
+						<xs:selector xpath="*" />
+						<xs:field xpath="." />
+					</xs:unique>
+				</xs:element>
+				<xs:element name="Dak" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Type" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="zadeldak" />
+										<xs:enumeration value="plat dak" />
+										<xs:enumeration value="lessenaardak" />
+										<xs:enumeration value="mansarde dak" />
+										<xs:enumeration value="dwarskap" />
+										<xs:enumeration value="samengesteld dak" />
+										<xs:enumeration value="schilddak" />
+										<xs:enumeration value="tentdak" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Materialen" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Materiaal" maxOccurs="unbounded">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="leisteen" />
+													<xs:enumeration value="riet" />
+													<xs:enumeration value="asbest" />
+													<xs:enumeration value="kunststof" />
+													<xs:enumeration value="pannen" />
+													<xs:enumeration value="bitumineuze dakbedekking" />
+													<xs:enumeration value="metaal" />
+													<xs:enumeration value="overig" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+								<xs:unique name="Materiaal_Uniek">
+									<xs:selector xpath="*" />
+									<xs:field xpath="." />
+								</xs:unique>
+							</xs:element>
+							<xs:element name="Toelichting" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1000" />
+										<xs:minLength value="1" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+		
+	<xs:element name="Appartement">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SoortAppartement">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="bovenwoning" />
+							<xs:enumeration value="benedenwoning" />
+							<xs:enumeration value="maisonnette" />
+							<xs:enumeration value="galerijflat" />
+							<xs:enumeration value="portiekflat" />
+							<xs:enumeration value="beneden + bovenwoning" />
+							<xs:enumeration value="penthouse" />
+							<xs:enumeration value="portiekwoning" />
+							<xs:enumeration value="studentenkamer" />
+							<xs:enumeration value="dubbel benedenhuis" />
+							<xs:enumeration value="tussenverdieping" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="KenmerkAppartement" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="service flat" />
+							<xs:enumeration value="appartement" />
+							<xs:enumeration value="corridorflat" />
+							<xs:enumeration value="bel-etage" />
+							<xs:enumeration value="souterrain" />
+							<xs:enumeration value="dubbel bovenhuis" />
+							<xs:enumeration value="verzorgingsflat" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="KwaliteitAppartement" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="normaal" />
+							<xs:enumeration value="eenvoudig" />
+							<xs:enumeration value="luxe" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="OpenPortiek">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="ja" />
+							<xs:enumeration value="nee" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Woonlaag" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="2" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="AantalWoonlagen">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="2" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="VVEActief" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="ja" />
+							<xs:enumeration value="nee" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Woonhuis">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SoortWoning">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="eengezinswoning" />
+							<xs:enumeration value="herenhuis" />
+							<xs:enumeration value="villa" />
+							<xs:enumeration value="landhuis" />
+							<xs:enumeration value="bungalow" />
+							<xs:enumeration value="woonboerderij" />
+							<xs:enumeration value="grachtenpand" />
+							<xs:enumeration value="woonboot" />
+							<xs:enumeration value="stacaravan" />
+							<xs:enumeration value="woonwagen" />
+							<xs:enumeration value="landgoed" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="TypeWoning">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="vrijstaande woning" />
+							<xs:enumeration value="geschakelde woning" />
+							<xs:enumeration value="2-onder-1-kapwoning" />
+							<xs:enumeration value="tussenwoning" />
+							<xs:enumeration value="hoekwoning" />
+							<xs:enumeration value="eindwoning" />
+							<xs:enumeration value="halfvrijstaande woning" />
+							<xs:enumeration value="geschakelde 2-onder-1-kapwoning" />
+							<xs:enumeration value="verspringend"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="KenmerkWoning" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="dijkwoning" />
+							<xs:enumeration value="split-level woning" />
+							<xs:enumeration value="drive-in woning" />
+							<xs:enumeration value="semi-bungalow" />
+							<xs:enumeration value="patiowoning" />
+							<xs:enumeration value="paalwoning" />
+							<xs:enumeration value="hofjeswoning" />
+							<xs:enumeration value="bedrijfs- of dienstwoning" />
+							<xs:enumeration value="waterwoning" />
+							<xs:enumeration value="wind/watermolen" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="KwaliteitWoning" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="normaal" />
+							<xs:enumeration value="eenvoudig" />
+							<xs:enumeration value="luxe" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Ligging" >
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="noord" />
+				<xs:enumeration value="noordoost" />
+				<xs:enumeration value="oost" />
+				<xs:enumeration value="zuidoost" />
+				<xs:enumeration value="zuid" />
+				<xs:enumeration value="zuidwest" />
+				<xs:enumeration value="west" />
+				<xs:enumeration value="noordwest" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	
+	<xs:element name="OverigeRuimten">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="OverigeRuimte" maxOccurs="unbounded">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="bijkeuken" />
+							<xs:enumeration value="douche" />
+							<xs:enumeration value="toilet" />
+							<xs:enumeration value="gang" />
+							<xs:enumeration value="tochtportaal" />
+							<xs:enumeration value="hal" />
+							<xs:enumeration value="stookruimte" />
+							<xs:enumeration value="berging" />
+							<xs:enumeration value="provisieruimte" />
+							<xs:enumeration value="balkon" />
+							<xs:enumeration value="dakterras" />
+							<xs:enumeration value="dakkapel" />
+							<xs:enumeration value="loggia" />
+							<xs:enumeration value="overloop" />
+							<xs:enumeration value="wasruimte" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="RuimteUniek">
+			<xs:selector xpath="*" />
+			<xs:field xpath="." />
+		</xs:unique>
+	</xs:element>
+
+	<xs:element name="ZolderVlieringOpties">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ZolderVlieringOptie" maxOccurs="unbounded">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="kamer mogelijk" />
+							<xs:enumeration value="vaste trap" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="ZolderVlieringOptie_Uniek">
+			<xs:selector xpath="*" />
+			<xs:field xpath="." />
+		</xs:unique>
+	</xs:element>
+	
+	<xs:element name="Afmetingen" >
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Lengte" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="6" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Breedte" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="6" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Oppervlakte" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="6" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="KoopAanneemsom" >
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Van" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="TotEnMet" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Huurprijs" >
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Van" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="TotEnMet" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:totalDigits value="9" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="MediaLijst">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="Media" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Media">
+		<xs:complexType>
+	  		<xs:sequence>
+				<xs:element minOccurs="0" ref="Groep" />
+				<xs:element minOccurs="0" ref="URL" />
+				<xs:element minOccurs="0" ref="MediaOmschrijving" />
+				<xs:element minOccurs="0" ref="MediaUpdate" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:positiveInteger" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Groep">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="HoofdFoto" />
+				<xs:enumeration value="Foto" />
+				<xs:enumeration value="Plattegrond" />
+				<xs:enumeration value="Brochure" />
+				<xs:enumeration value="Overig" />	
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	
+	<xs:element name="URL" type="xs:string" />
+	<xs:element name="MediaOmschrijving" type="xs:string" />
+	<xs:element name="MediaUpdate" type="xs:dateTime" />
+	
+	<xs:complexType name="OverigeRuimtenType">
+		<xs:sequence>
+			<xs:element name="OverigeRuimte" maxOccurs="unbounded">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="bijkeuken" />
+						<xs:enumeration value="douche" />
+						<xs:enumeration value="toilet" />
+						<xs:enumeration value="gang" />
+						<xs:enumeration value="tochtportaal" />
+						<xs:enumeration value="hal" />
+						<xs:enumeration value="stookruimte" />
+						<xs:enumeration value="berging" />
+						<xs:enumeration value="provisieruimte" />
+						<xs:enumeration value="balkon" />
+						<xs:enumeration value="dakterras" />
+						<xs:enumeration value="dakkapel" />
+						<xs:enumeration value="loggia" />
+						<xs:enumeration value="overloop" />
+						<xs:enumeration value="wasruimte" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="BadkamerType">
+		<xs:sequence>
+			<xs:element name="Voorzieningen" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Voorziening" maxOccurs="unbounded">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="ligbad" />
+									<xs:enumeration value="zitbad" />
+									<xs:enumeration value="toilet" />
+									<xs:enumeration value="douche" />
+									<xs:enumeration value="urinoir" />
+									<xs:enumeration value="bidet" />
+									<xs:enumeration value="stoomcabine" />
+									<xs:enumeration value="jacuzzi" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+				<xs:unique name="BadkamerVoorziening_Uniek">
+					<xs:selector xpath="*" />
+					<xs:field xpath="." />
+				</xs:unique>
+			</xs:element>
+			<xs:element name="Afmetingen" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Lengte" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:positiveInteger">
+									<xs:totalDigits value="6" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Breedte" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:positiveInteger">
+									<xs:totalDigits value="6" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Oppervlakte" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:positiveInteger">
+									<xs:totalDigits value="6" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="KeukenType">
+		<xs:sequence>
+			<xs:element name="Types" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Type" maxOccurs="unbounded">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="open keuken" />
+									<xs:enumeration value="woonkeuken" />
+									<xs:enumeration value="inbouwapparatuur" />
+									<xs:enumeration value="dichte keuken" />
+									<xs:enumeration value="half open keuken" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+				<xs:unique name="KeukenType_Uniek">
+					<xs:selector xpath="*" />
+					<xs:field xpath="." />
+				</xs:unique>
+			</xs:element>
+			<xs:element name="Afmetingen" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Lengte" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:positiveInteger">
+									<xs:totalDigits value="6" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Breedte" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:positiveInteger">
+									<xs:totalDigits value="6" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Oppervlakte" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:positiveInteger">
+									<xs:totalDigits value="6" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Vernieuwd" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:positiveInteger">
+						<xs:totalDigits value="4" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="WoonkamerType">
+		<xs:sequence>
+			<xs:element name="Types" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Type" maxOccurs="unbounded">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="woonkamer" />
+									<xs:enumeration value="T-kamer" />
+									<xs:enumeration value="Z-kamer" />
+									<xs:enumeration value="U-kamer" />
+									<xs:enumeration value="L-kamer" />
+									<xs:enumeration value="kamer en suite" />
+									<xs:enumeration value="voormalig en suite" />
+									<xs:enumeration value="doorzonkamer" />
+									<xs:enumeration value="tuinkamer" />
+									<xs:enumeration value="serre" />
+									<xs:enumeration value="studeerkamer" />
+									<xs:enumeration value="werkkamer" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+				<xs:unique name="WoonkamerType_Uniek">
+					<xs:selector xpath="*" />
+					<xs:field xpath="." />
+				</xs:unique>
+			</xs:element>
+			<xs:element name="Afmetingen" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Lengte" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:positiveInteger">
+									<xs:totalDigits value="6" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Breedte" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:positiveInteger">
+									<xs:totalDigits value="6" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Oppervlakte" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:positiveInteger">
+									<xs:totalDigits value="6" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Trap">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="ja" />
+						<xs:enumeration value="nee" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ZolderVlieringOptiesType">
+		<xs:sequence>
+			<xs:element name="ZolderVlieringOptie" maxOccurs="unbounded">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="kamer mogelijk" />
+						<xs:enumeration value="vaste trap" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="LiggingType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="noord" />
+			<xs:enumeration value="noordoost" />
+			<xs:enumeration value="oost" />
+			<xs:enumeration value="zuidoost" />
+			<xs:enumeration value="zuid" />
+			<xs:enumeration value="zuidwest" />
+			<xs:enumeration value="west" />
+			<xs:enumeration value="noordwest" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+</xs:schema>

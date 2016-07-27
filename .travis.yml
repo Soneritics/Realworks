@@ -1,0 +1,16 @@
+install: composer install
+
+language: php
+
+php:
+  - 5.5
+  - 5.6
+  - 7.0
+
+script:
+  - vendor/bin/phpcs --standard=PSR1,PSR2 Soneritics/Realworks/
+  - mkdir -p build/logs
+  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml --whitelist Soneritics/ test/
+
+after_script:
+  - php vendor/bin/coveralls -v

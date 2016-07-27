@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<ObjectenLijst TimeStamp="17-07-2012 09:02:12"  Versie="12" ><Object><NVMVestigingNR>12093</NVMVestigingNR><ObjectCompany>42209</ObjectCompany><ObjectAfdeling>903782</ObjectAfdeling><ObjectTiaraID>95610</ObjectTiaraID><ObjectSystemID>139785</ObjectSystemID><ObjectCode>B100293</ObjectCode><ObjectDetails><Adres><Straatnaam>Korte Kapellaan</Straatnaam><Huisnummer><Hoofdnummer>10</Hoofdnummer></Huisnummer><Postcode>1852 PP</Postcode><Woonplaats>HEILOO</Woonplaats></Adres><Koop><PrijsSpecificatie><Prijs>375000</Prijs><BTWTarief>19</BTWTarief><BTWBelast>ja</BTWBelast></PrijsSpecificatie><KoopConditie>kosten koper</KoopConditie></Koop><Aanvaarding><TypeAanvaarding>in overleg</TypeAanvaarding></Aanvaarding><ObjectAanmelding>In verkoop genomen</ObjectAanmelding><DatumInvoer>2010-01-04</DatumInvoer><DatumWijziging>2011-10-18</DatumWijziging><Status><StatusType>Beschikbaar</StatusType></Status><Bouwvorm>Bestaande bouw</Bouwvorm><Aanbiedingstekst>Op de grens van Limmen en Heiloo ligt deze grote loods (ca. 267 m2) met daarvoor een multifunctioneel gebouw (300 m2 vloeroppervlakte verdeeld over 3 verdiepingen). Dit gebouw kan worden heringericht als bedrijfswoning, kantoorruimte (maximaal 20% van het woon-oppervlakte), opslag of een combinatie daarvan.&#xd;
+Naast de loods bevindt zich nog een overkapte opslagruimte van ca. 180 m2.&#xd;
+Op het terrein is voldoende parkeerruimte aanwezig.&#xd;
+&#xd;
+Ook geschikt voor het bouwen van woningen. Voor impressies van 1 vrijstaande woning, 2 vrijstaande woningen en een 2/1-kapwoning, zie Funda.</Aanbiedingstekst><OppervlaktePerceel>825</OppervlaktePerceel><Bestemming><Hoofdbestemming>Bedrijfsruimte</Hoofdbestemming><Nevenbestemmingen><Nevenbestemming>Bouwgrond</Nevenbestemming></Nevenbestemmingen></Bestemming><Woonobject><Situatie>Aanbouw</Situatie><Oppervlakte>200</Oppervlakte><Status>Woonruimte mogelijk</Status></Woonobject></ObjectDetails><Gebouw><GebouwDetails><Bouwjaar><Periode>1945-1959</Periode><InAanbouw>nee</InAanbouw></Bouwjaar><Onderhoud><Binnen><Waarderingen><Waardering>redelijk</Waardering></Waarderingen></Binnen><Buiten><Waarderingen><Waardering>redelijk</Waardering></Waarderingen></Buiten></Onderhoud><Lokatie><Liggingen><Ligging>Elders</Ligging><Ligging>Woonomgeving</Ligging></Liggingen><Parkeren><Parkeerfaciliteiten>Voldoende parkeerplaatsen op eigen terrein.</Parkeerfaciliteiten></Parkeren></Lokatie></GebouwDetails><Bedrijfsruimte><Bedrijfshal><Oppervlakte>267</Oppervlakte><InUnitsVanaf>0</InUnitsVanaf><VrijeHoogte>300</VrijeHoogte><VrijeOverspanning>0</VrijeOverspanning><Vloerbelasting>0</Vloerbelasting></Bedrijfshal><Kantoorruimte><Oppervlakte>60</Oppervlakte><Verdiepingen>3</Verdiepingen><Opleveringsniveau><Voorziening>Te openen ramen</Voorziening></Opleveringsniveau></Kantoorruimte><Terrein><Oppervlakte>825</Oppervlakte><Uitbreidingsmogelijkheden><InVierkanteMeters>0</InVierkanteMeters><Bouwhoogte>0</Bouwhoogte></Uitbreidingsmogelijkheden></Terrein></Bedrijfsruimte></Gebouw><MediaLijst><Media><Groep>HoofdFoto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/13539607.jpg?check=md5%3Af25d943a2399884de86055ba8c33033c&resize=4]]></URL><MediaUpdate>2010-01-04T11:39:01</MediaUpdate></Media><Media><Groep>Foto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/13539608.jpg?check=md5%3Af91527e4c569f76f621c39f51f1798f2&resize=4]]></URL><MediaUpdate>2010-01-04T11:39:02</MediaUpdate></Media><Media><Groep>Foto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/13539609.jpg?check=md5%3A1baef5510ce42cd683b3bb2e5f3a6b90&resize=4]]></URL><MediaUpdate>2010-01-04T11:39:02</MediaUpdate></Media><Media><Groep>Foto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/13539610.jpg?check=md5%3Af1c89f59870a10653914b96b3fb14daa&resize=4]]></URL><MediaUpdate>2010-01-04T11:39:02</MediaUpdate></Media><Media><Groep>Foto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/13539611.jpg?check=md5%3Abdce52a7a5734d8ae01e52d11debb9c0&resize=4]]></URL><MediaUpdate>2010-01-04T11:39:02</MediaUpdate></Media></MediaLijst><Web><PrijsTonen>ja</PrijsTonen><KorteOmschrijving>Multifunctionele bedrijfsruimte</KorteOmschrijving></Web></Object><Object><NVMVestigingNR>12093</NVMVestigingNR><ObjectCompany>42209</ObjectCompany><ObjectAfdeling>903782</ObjectAfdeling><ObjectTiaraID>130283</ObjectTiaraID><ObjectSystemID>169188</ObjectSystemID><ObjectCode>B100362</ObjectCode><ObjectDetails><Adres><Straatnaam>Heemstederweg</Straatnaam><Huisnummer><Hoofdnummer>64</Hoofdnummer></Huisnummer><Postcode>1902 RP</Postcode><Woonplaats>CASTRICUM</Woonplaats></Adres><Koop><PrijsSpecificatie><Prijs>157500</Prijs><BTWTarief>19</BTWTarief><BTWBelast>ja</BTWBelast></PrijsSpecificatie><KoopConditie>kosten koper</KoopConditie></Koop><Aanvaarding><TypeAanvaarding>in overleg</TypeAanvaarding></Aanvaarding><ObjectAanmelding>In verkoop genomen</ObjectAanmelding><DatumInvoer>2011-08-05</DatumInvoer><DatumWijziging>2012-03-09</DatumWijziging><Status><StatusType>Beschikbaar</StatusType></Status><Bouwvorm>Bestaande bouw</Bouwvorm><Aanbiedingstekst>Op het moderne bedrijventerrein "Heemstederweg" bieden wij u deze multifunctionele kantoor/bedrijfsruimte van 123 m2 BVO aan.
+Het pand heeft ca. 70m2 BVO op de begane grond en ca. 53 m2 op de verdieping.
+De huidige indeling bestaat momenteel uit ca. 105 m2 kantoorruimte verdeeld over 2 verdiepingen en ca. 18 m2 opslagruimte met overheadeur. 
+Andere indelingen, zoals bedrijfsruimte, opslag, etc. zijn gemakkelijk te realiseren.
+
+Locatie en bereikbaarheid:
+Bedrijventerrein "Heemstederweg" is gelegen aan de rand van de gemeente Castricum.
+
+Oppervlakte, huidige indeling:
+Begane grond :ca. 70 m² BVO bedrijfsruimte/kantoor/opslag
+Entree, ontvangstruimte met pantry en toilet, kantoorruimte, opslagruimte met overheaddeur
+1e verdieping :ca. 53 m² BVO kantoor
+Vaste trap naar kantoorruimte op 1e verdieping.
+totaal : ca. 123 m² BVO
+
+Parkeren:
+2 parkeerplaatsen op eigen terrein. 
+
+Kadaster: Gemeente Castricum, Sectie H Nummer 275-A15
+
+Bestemming:
+Volgens het vigerende bestemmingsplan geldt de bestemming "Ambachtelijke verzorgende bedrijven" wat onder andere inhoudt: verzorgende en dienstverlenende bedrijven.
+U kunt bij de gemeente Castricum, afdeling Bouw- en Woningtoezicht, informeren naar de bestemming en naar de mogelijkheden van vestiging van uw bedrijf.
+
+Voorzieningen/bijzonderheden:
+De bedrijfsruimte is o.a. voorzien van:
+- overheaddeur
+- toiletruimte op begane grond
+- pantry op begane grond
+- isolatieglas in hardhouten kozijnen
+- CV-ketel Remeha Quinta 25 HR uit 2006
+- vloerbedekking: laminaat en tapijt
+- systeemplafonds met verlichtingsarmaturen op begane grond en verdieping
+- bouwjaar 2001/2002
+- aanvaarding in overleg.
+
+Vloerbelasting begane grond : ca. 2.000 kg/m²
+
+Omzetbelasting/ kosten koper:
+De koop is kosten koper. Dat wil zeggen dat de verschuldigde overdrachtsbelasting en de notariskosten in rekening gebracht wordt bij de koper.
+Waarschijnlijk wenst verkoper te opteren voor een zogenaamde BTW-belaste verkoop. Dit wordt momenteel onderzocht. Dat betekent dat er naast overdrachtsbelasting ook BTW in rekening gebracht wordt over de koopsom. Hiervoor dient koper wel een zogenaamde BTW-ondernemer te zijn of te worden (dit kan ook een privé-persoon zijn). De betaalde BTW kan dan verrekend worden.</Aanbiedingstekst><OppervlaktePerceel>115</OppervlaktePerceel><Bestemming><Hoofdbestemming>Bedrijfsruimte</Hoofdbestemming><Nevenbestemmingen><Nevenbestemming>Kantoorruimte</Nevenbestemming></Nevenbestemmingen></Bestemming></ObjectDetails><Gebouw><GebouwDetails><Bouwjaar><JaarOmschrijving><Jaar>2001</Jaar></JaarOmschrijving><InAanbouw>nee</InAanbouw></Bouwjaar><Onderhoud><Binnen><Waarderingen><Waardering>goed</Waardering></Waarderingen></Binnen><Buiten><Waarderingen><Waardering>goed</Waardering></Waarderingen></Buiten></Onderhoud><Lokatie><Liggingen><Ligging>Bedrijventerrein</Ligging></Liggingen><Parkeren><Parkeerfaciliteiten>2</Parkeerfaciliteiten></Parkeren></Lokatie></GebouwDetails><Bedrijfsruimte><Bedrijfshal><Oppervlakte>70</Oppervlakte><InUnitsVanaf>0</InUnitsVanaf><VrijeHoogte>3000</VrijeHoogte><VrijeOverspanning>0</VrijeOverspanning><Vloerbelasting>2000</Vloerbelasting></Bedrijfshal><Kantoorruimte><Oppervlakte>53</Oppervlakte><Verdiepingen>2</Verdiepingen><Opleveringsniveau><Voorziening>Inbouwarmaturen</Voorziening><Voorziening>Te openen ramen</Voorziening></Opleveringsniveau></Kantoorruimte></Bedrijfsruimte></Gebouw><MediaLijst><Media><Groep>HoofdFoto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/19842941.jpg?check=md5%3A1b8f58a63018f6ffe749bb520e449130&resize=4]]></URL><MediaUpdate>2011-10-12T09:32:12</MediaUpdate></Media><Media><Groep>Foto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/19842942.jpg?check=md5%3A0cd41cacd5964eb60798f0e52202a06e&resize=4]]></URL><MediaUpdate>2011-10-12T09:32:14</MediaUpdate></Media><Media><Groep>Foto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/19842943.jpg?check=md5%3A7da9c83f5f98aa3222260b080a97964f&resize=4]]></URL><MediaUpdate>2011-10-12T09:32:14</MediaUpdate></Media><Media><Groep>Foto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/19842944.jpg?check=md5%3A75e7893a534ef6ed26cc27a4b9987ed0&resize=4]]></URL><MediaUpdate>2011-10-12T09:32:14</MediaUpdate></Media><Media><Groep>Foto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/19842945.jpg?check=md5%3A0f48304eb42930c3d30678274b09c27f&resize=4]]></URL><MediaUpdate>2011-10-12T09:32:14</MediaUpdate></Media><Media><Groep>Foto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/19842946.jpg?check=md5%3Aa88c29e2dfbf7ed8b64ffd624e879b69&resize=4]]></URL><MediaUpdate>2011-10-12T09:32:15</MediaUpdate></Media></MediaLijst><Web><PrijsTonen>ja</PrijsTonen></Web></Object><Object><NVMVestigingNR>12093</NVMVestigingNR><ObjectCompany>42209</ObjectCompany><ObjectAfdeling>903782</ObjectAfdeling><ObjectTiaraID>132185</ObjectTiaraID><ObjectSystemID>173534</ObjectSystemID><ObjectCode>B100373</ObjectCode><ObjectDetails><Adres><Straatnaam>Heemstederweg</Straatnaam><Huisnummer><Hoofdnummer>64</Hoofdnummer></Huisnummer><Postcode>1902 RP</Postcode><Woonplaats>CASTRICUM</Woonplaats></Adres><Koop><PrijsSpecificatie><Prijs>157500</Prijs><BTWTarief>19</BTWTarief><BTWBelast>ja</BTWBelast></PrijsSpecificatie><KoopConditie>kosten koper</KoopConditie></Koop><Aanvaarding><TypeAanvaarding>in overleg</TypeAanvaarding></Aanvaarding><ObjectAanmelding>In verkoop genomen</ObjectAanmelding><DatumInvoer>2011-11-08</DatumInvoer><DatumWijziging>2011-11-08</DatumWijziging><Status><StatusType>Beschikbaar</StatusType></Status><Bouwvorm>Bestaande bouw</Bouwvorm><Aanbiedingstekst>Op het moderne bedrijventerrein "Heemstederweg" bieden wij u deze multifunctionele kantoor/bedrijfsruimte van 123 m2 BVO aan.&#xd;
+Het pand heeft ca. 70m2 BVO op de begane grond en ca. 53 m2 op de verdieping.&#xd;
+De huidige indeling bestaat momenteel uit ca. 105 m2 kantoorruimte verdeeld over 2 verdiepingen en ca. 18 m2 opslagruimte met overheadeur. &#xd;
+Andere indelingen, zoals bedrijfsruimte, opslag, etc. zijn gemakkelijk te realiseren.&#xd;
+&#xd;
+Locatie en bereikbaarheid:&#xd;
+Bedrijventerrein "Heemstederweg" is gelegen aan de rand van de gemeente Castricum.&#xd;
+&#xd;
+Oppervlakte, huidige indeling:&#xd;
+Begane grond :ca. 70 m² BVO bedrijfsruimte/kantoor/opslag&#xd;
+Entree, ontvangstruimte met pantry en toilet, kantoorruimte, opslagruimte met overheaddeur&#xd;
+1e verdieping :ca. 53 m² BVO kantoor&#xd;
+Vaste trap naar kantoorruimte op 1e verdieping.&#xd;
+totaal : ca. 123 m² BVO&#xd;
+&#xd;
+Parkeren:&#xd;
+2 parkeerplaatsen op eigen terrein. &#xd;
+&#xd;
+Kadaster: Gemeente Castricum, Sectie H Nummer 275-A15&#xd;
+&#xd;
+Bestemming:&#xd;
+Volgens het vigerende bestemmingsplan geldt de bestemming "Ambachtelijke verzorgende bedrijven" wat onder andere inhoudt: verzorgende en dienstverlenende bedrijven.&#xd;
+U kunt bij de gemeente Castricum, afdeling Bouw- en Woningtoezicht, informeren naar de bestemming en naar de mogelijkheden van vestiging van uw bedrijf.&#xd;
+&#xd;
+Voorzieningen/bijzonderheden:&#xd;
+De bedrijfsruimte is o.a. voorzien van:&#xd;
+- overheaddeur&#xd;
+- toiletruimte op begane grond&#xd;
+- pantry op begane grond&#xd;
+- isolatieglas in hardhouten kozijnen&#xd;
+- CV-ketel Remeha Quinta 25 HR uit 2006&#xd;
+- vloerbedekking: laminaat en tapijt&#xd;
+- systeemplafonds met verlichtingsarmaturen op begane grond en verdieping&#xd;
+- bouwjaar 2001/2002&#xd;
+- aanvaarding in overleg.&#xd;
+&#xd;
+Vloerbelasting begane grond : ca. 2.000 kg/m²&#xd;
+&#xd;
+Omzetbelasting/ kosten koper:&#xd;
+De koop is kosten koper. Dat wil zeggen dat de verschuldigde overdrachtsbelasting en de notariskosten in rekening gebracht wordt bij de koper.&#xd;
+Waarschijnlijk wenst verkoper te opteren voor een zogenaamde BTW-belaste verkoop. Dit wordt momenteel onderzocht. Dat betekent dat er naast overdrachtsbelasting ook BTW in rekening gebracht wordt over de koopsom. Hiervoor dient koper wel een zogenaamde BTW-ondernemer te zijn of te worden (dit kan ook een privé-persoon zijn). De betaalde BTW kan dan verrekend worden.</Aanbiedingstekst><OppervlaktePerceel>115</OppervlaktePerceel><Bestemming><Hoofdbestemming>Kantoorruimte</Hoofdbestemming><Nevenbestemmingen><Nevenbestemming>Bedrijfsruimte</Nevenbestemming></Nevenbestemmingen></Bestemming></ObjectDetails><Gebouw><GebouwDetails><Bouwjaar><JaarOmschrijving><Jaar>2001</Jaar></JaarOmschrijving><InAanbouw>nee</InAanbouw></Bouwjaar><Onderhoud><Binnen><Waarderingen><Waardering>goed</Waardering></Waarderingen></Binnen><Buiten><Waarderingen><Waardering>goed</Waardering></Waarderingen></Buiten></Onderhoud><Lokatie><Liggingen><Ligging>Bedrijventerrein</Ligging></Liggingen><Parkeren><Parkeerfaciliteiten>2</Parkeerfaciliteiten></Parkeren></Lokatie></GebouwDetails><Kantoorruimte><Oppervlakte>123</Oppervlakte><InUnitsVanaf>0</InUnitsVanaf><Verdiepingen>2</Verdiepingen><Opleveringsniveau><Voorziening>Inbouwarmaturen</Voorziening><Voorziening>Te openen ramen</Voorziening></Opleveringsniveau></Kantoorruimte></Gebouw><MediaLijst><Media><Groep>HoofdFoto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/20119881.jpg?check=md5%3A2e40c9571f0be72edfeaf384b4bb579d&resize=4]]></URL><MediaUpdate>2011-11-08T14:06:12</MediaUpdate></Media><Media><Groep>Foto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/20119882.jpg?check=md5%3A515aedd02b437dfe2ccc2fc937280ca1&resize=4]]></URL><MediaUpdate>2011-11-08T14:06:12</MediaUpdate></Media><Media><Groep>Foto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/20119883.jpg?check=md5%3A3837ca7bf53b76f452629587780d143c&resize=4]]></URL><MediaUpdate>2011-11-08T14:06:13</MediaUpdate></Media><Media><Groep>Foto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/20119884.jpg?check=md5%3A63fea616ca012a8280cc37775c387acb&resize=4]]></URL><MediaUpdate>2011-11-08T14:06:13</MediaUpdate></Media><Media><Groep>Foto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/20119885.jpg?check=md5%3A4b093bf978fdba1f15da3802935ce755&resize=4]]></URL><MediaUpdate>2011-11-08T14:06:13</MediaUpdate></Media><Media><Groep>Foto</Groep><URL><![CDATA[https://images.realworks.nl/servlets/images/media.objectmedia/20119886.jpg?check=md5%3Aada53a76d7f659ccafa305bfb7871d09&resize=4]]></URL><MediaUpdate>2011-11-08T14:06:13</MediaUpdate></Media></MediaLijst><Web><PrijsTonen>ja</PrijsTonen></Web></Object></ObjectenLijst>

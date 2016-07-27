@@ -1,0 +1,22 @@
+{
+  "name": "soneritics/realworks",
+  "type": "library",
+  "description": "Realworks real estate connector",
+  "homepage": "https://github.com/Soneritics/Realworks",
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=5.5.0",
+    "guzzlehttp/guzzle": "6.*",
+    "zendframework/zend-filter": "2.7.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "dev-master",
+    "squizlabs/php_codesniffer": "dev-master",
+    "satooshi/php-coveralls": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {"Cache\\": "Soneritics/Realworks/"}
+  }
+}
