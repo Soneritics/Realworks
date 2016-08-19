@@ -25,8 +25,24 @@
 
 /**
  * Example file for the Realworks flow.
- * Uses the Realworks class to process the full flow.
- *
- * @author Jordi Jolink <mail@jordijolink.nl>
+ * Illustrates the parsing of the 'Wonen' data.
  */
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
+// Configs. When you are using this, remove the following line: $downloader->setDownloadUrl('..');
+$username = '';
+$password = '';
+
+// Step 1: Download the file
+$type = new \Realworks\RealEstateType\Wonen;
+$downloader = new \Realworks\Downloader\Downloader($username, $password, $type);
+
+# Explicitly overrule the URL, so no user/pass is needed
+$downloader->setDownloadUrl('http://xml-publish.realworks.nl/servlets/ogexport?koppeling=WEBSITE&og=WONEN&documentatie=true');
+
+$zippedContent = $downloader->download();
+
+// Step 2: Validate the zipped content
+
+// Step 3: Unpack the zipped content
