@@ -22,16 +22,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Realworks\Downloader\RealEstateType;
+namespace Realworks\RealEstateType;
 
 use Realworks\RoleInterface\IString;
 
 /**
- * Class BOG
- * @package Realworks\Downloader\RealEstateType
+ * Class Nieuwbouw
+ * @package Realworks\RealEstateType
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-final class BOG implements IString
+final class Nieuwbouw implements IString, IRealEstateType
 {
     /**
      * Get the name of the real estate type for use in the Downloader.
@@ -39,6 +39,6 @@ final class BOG implements IString
      */
     public function __toString()
     {
-        return 'BOG';
+        return 'NIEUWBOUW';
     }
 }

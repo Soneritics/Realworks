@@ -24,6 +24,10 @@
  */
 namespace Realworks\Downloader;
 
+use Realworks\Exceptions\TempDirNotWritable;
+use Realworks\RealEstateType\IRealEstateType;
+use Realworks\ZippedContent\ZippedContent;
+
 /**
  * Class Downloader
  *
@@ -32,5 +36,99 @@ namespace Realworks\Downloader;
  */
 class Downloader
 {
+    /**
+     * @var string
+     */
+    private $username;
 
+    /**
+     * @var string
+     */
+    private $password;
+
+    /**
+     * @var string
+     */
+    private $url;
+
+    /**
+     * @var string
+     */
+    private $tempDir;
+
+    /**
+     * Downloader constructor.
+     * @param $username
+     * @param $password
+     * @param IRealEstateType $realEstateType
+     * @param string $tempDir
+     */
+    public function __construct($username, $password, IRealEstateType $realEstateType, $tempDir = '')
+    {
+        $this->username = $username;
+        $this->password = $password;
+        $this->setDownloadUrlFromUserPassType();
+        $this->setTempDir($tempDir);
+    }
+
+    /**
+     * Set the download URL.
+     * @param string $url
+     * @return $this
+     */
+    public function setDownloadUrl($url)
+    {
+        $this->url = $url;
+        return $this;
+    }
+
+    /**
+     * Download the zip file.
+     * @return ZippedContent
+     */
+    public function download()
+    {
+
+        return new ZippedContent('filename hier');
+    }
+
+    /**
+     * Set the URL from the provided username, password and type.
+     * @param string $username
+     * @param string $password
+     * @param IRealEstateType $realEstateType
+     */
+    private function setDownloadUrlFromUserPassType($username, $password, IRealEstateType $realEstateType)
+    {
+        $url = sprintf(
+            'https://xml-publish.realworks.nl/servlets/ogexport?koppeling=WEBSITE&og=%s&user=%s&password=%s',
+            $realEstateType,
+            $username,
+            $password
+        );
+        $this->setDownloadUrl($url);
+    }
+
+    /**
+     * Set and check the temp directory to download and extract the file in.
+     * @param string $tempDir
+     * @throws TempDirNotWritable
+     */
+    private function setTempDir($tempDir)
+    {
+        if (empty($tempDir)) {
+            $tempDir = sys_get_temp_dir();
+        }
+
+        if (!empty($tempDir) && !in_array(substr($tempDir, -1), ['/', '\\'])) {
+            $tempDir .= '/';
+        }
+
+        $finalTempDir = $tempDir . 'realworks-' . time() . '/';
+        if (!is_writable($tempDir) || !mkdir($finalTempDir)) {
+            throw new TempDirNotWritable("Temp dir not writable: {$finalTempDir}");
+        }
+
+        $this->tempDir = $finalTempDir;
+    }
 }

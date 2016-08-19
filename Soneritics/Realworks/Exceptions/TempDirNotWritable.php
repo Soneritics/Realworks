@@ -22,23 +22,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Realworks\Downloader\RealEstateType;
-
-use Realworks\RoleInterface\IString;
+namespace Realworks\Exceptions;
 
 /**
- * Class Wonen
- * @package Realworks\Downloader\RealEstateType
+ * Class TempDirNotWritable
+ *
+ * @package Realworks\Exceptions
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-final class Wonen implements IString
+class TempDirNotWritable extends \Exception
 {
-    /**
-     * Get the name of the real estate type for use in the Downloader.
-     * @return string
-     */
-    public function __toString()
-    {
-        return 'WONEN';
-    }
+
 }
