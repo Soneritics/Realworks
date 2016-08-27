@@ -25,6 +25,7 @@
 namespace Realworks\Downloader;
 
 use Realworks\Exceptions\TempDirNotWritable;
+use Realworks\Exceptions\UnableToDownload;
 use Realworks\RealEstateType\IRealEstateType;
 use Realworks\ZippedContent\ZippedContent;
 
@@ -47,6 +48,16 @@ class Downloader
     private $password;
 
     /**
+     * @var IRealEstateType
+     */
+    private $realEstateType;
+
+    /**
+     * @var string
+     */
+    private $office;
+
+    /**
      * @var string
      */
     private $url;
@@ -67,6 +78,7 @@ class Downloader
     {
         $this->username = $username;
         $this->password = $password;
+        $this->realEstateType = $realEstateType;
         $this->setDownloadUrlFromUserPassType();
         $this->setTempDir($tempDir);
     }
@@ -83,13 +95,34 @@ class Downloader
     }
 
     /**
+     * Set the office number (optional parameter)
+     * @param $office
+     * @return $this
+     */
+    public function setOffice($office)
+    {
+        $this->office = $office;
+        return $this;
+    }
+
+    /**
      * Download the zip file.
      * @return ZippedContent
+     * @throws UnableToDownload
      */
     public function download()
     {
+        $source = $this->url;
+        $destination = $this->tempDir . $this->realEstateType . '.zip';
 
-        return new ZippedContent('filename hier');
+        $client = new GuzzleHttp\Client;
+        $client->request('GET', $source, ['sink' => $destination]);
+
+        if ((int)$client->getStatusCode() !== 200) {
+            throw new UnableToDownload("Could not download {$source}");
+        }
+
+        return new ZippedContent($destination);
     }
 
     /**
@@ -106,6 +139,11 @@ class Downloader
             $username,
             $password
         );
+
+        if (!empty($this->office)) {
+            $url .= '?&kantoor=' . $this->office;
+        }
+
         $this->setDownloadUrl($url);
     }
 

@@ -22,56 +22,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Realworks\File;
-
-use Realworks\RoleInterface\IFile;
+namespace Realworks\Exceptions;
 
 /**
- * Class File
+ * Class UnableToDownload
  *
- * @package Realworks\File
+ * @package Realworks\Exceptions
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class File implements IFile
+class UnableToDownload extends \Exception
 {
-    /**
-     * @var string
-     */
-    protected $filename;
 
-    /**
-     * Get the filename of the file.
-     * @return string
-     */
-    public function getFilename()
-    {
-        return $this->filename;
-    }
-
-    /**
-     * Get the basename of the file.
-     * @return string
-     */
-    public function getBasename()
-    {
-        return basename($this->filename);
-    }
-
-    /**
-     * Get the directory of the file, including a trailing (back)slash.
-     * @return string
-     */
-    public function getDirectory()
-    {
-        return dirname($this->filename) . DIRECTORY_SEPARATOR;
-    }
-
-    /**
-     * IFile constructor.
-     * @param string $filename
-     */
-    public function __construct($filename)
-    {
-        $this->filename = $filename;
-    }
 }
