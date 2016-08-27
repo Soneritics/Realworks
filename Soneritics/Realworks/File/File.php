@@ -68,6 +68,6 @@ class File implements IFile
     public function __construct($filename)
     {
         parent::__construct($filename);
-
+        // TODO: Implement __construct() method.
     }
 }

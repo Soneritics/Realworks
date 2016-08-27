@@ -43,4 +43,4 @@ This script can also guide you through the whole process, including:
  * Unpack the zipped content
  * Validate the XML file against the XSD
  * Process the XML file
-The example for this is included as [FullExample.php!](example/FullExample.php).
+The example for this is included as [FullExample.php](example/FullExample.php).
