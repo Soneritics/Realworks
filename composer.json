@@ -17,6 +17,6 @@
     "satooshi/php-coveralls": "dev-master"
   },
   "autoload": {
-    "psr-4": {"Cache\\": "Soneritics/Realworks/"}
+    "psr-4": {"Realworks\\": "Soneritics/Realworks/"}
   }
 }
