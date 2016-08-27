@@ -21,7 +21,7 @@ The following conditions have been set by Realworks. As an ISP you will have to 
  * Maximum size of the images is 1600x100 pixels.
 
 ## Minimum Requirements ##
-- PHP 5.+6
+- PHP 5.6+
 
 ## Examples
 Minimal example, when you have downloaded and extracted the ZIP file yourself and only want the XML to be parsed:
