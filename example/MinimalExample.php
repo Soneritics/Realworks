@@ -22,37 +22,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Realworks\RoleInterface;
 
 /**
- * Class IFile
- *
- * @package Realworks\RoleInterface
- * @author Jordi Jolink <mail@jordijolink.nl>
+ * Minimal example, illustrates parsing of the 'Wonen' data.
+ * When you download the file yourself, unzip it and validate the XML, you can use this example.
  */
-interface IFile
-{
-    /**
-     * Get the filename of the file.
-     * @return string
-     */
-    public function getFilename();
 
-    /**
-     * Get the basename of the file.
-     * @return string
-     */
-    public function getBasename();
+require_once __DIR__ . '/../vendor/autoload.php';
 
-    /**
-     * Get the directory of the file, including a trailing (back)slash.
-     * @return string
-     */
-    public function getDirectory();
+// Define the type and store the XML filename in a variable
+$type = new \Realworks\RealEstateType\Wonen;
+$xmlFilename = __DIR__ . '/../test/Assets/wonen.xml';
 
-    /**
-     * IFile constructor.
-     * @param string $filename
-     */
-    public function __construct($filename);
-}
+// Parse the file
+$xmlFile = new \Realworks\File\XMLFile($xmlFilename);
+$parser = (new \Realworks\Parser\ParserFactory)->build($type);
+
+$result = $parser->parse($xmlFile);
+print_r($result);

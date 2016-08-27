@@ -24,6 +24,8 @@
  */
 namespace Realworks\File\Validator;
 
+use Realworks\File\XMLFile;
+use Realworks\File\XSDFile;
 use Realworks\RoleInterface\IValidator;
 
 /**
@@ -34,6 +36,27 @@ use Realworks\RoleInterface\IValidator;
  */
 class XMLFileValidator implements IValidator
 {
+    /**
+     * @var XMLFile
+     */
+    private $xmlFile;
+
+    /**
+     * @var XSDFile
+     */
+    private $xsdFile;
+
+    /**
+     * XMLFileValidator constructor.
+     * @param XMLFile $xmlFile
+     * @param XSDFile $xsdFile
+     */
+    public function __construct(XMLFile $xmlFile, XSDFile $xsdFile)
+    {
+        $this->xmlFile = $xmlFile;
+        $this->xsdFile = $xsdFile;
+    }
+
     /**
      * Validate the object.
      * @return boolean

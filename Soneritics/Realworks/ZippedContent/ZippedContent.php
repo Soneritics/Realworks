@@ -24,7 +24,7 @@
  */
 namespace Realworks\ZippedContent;
 
-use Realworks\RoleInterface\IFile;
+use Realworks\File\File;
 
 /**
  * Class ZippedContent
@@ -32,23 +32,7 @@ use Realworks\RoleInterface\IFile;
  * @package Realworks\ZippedContent
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class ZippedContent implements IFile
+class ZippedContent extends File
 {
-    /**
-     * Get the filename of the file.
-     * @return string
-     */
-    public function getFilename()
-    {
-        // TODO: Implement getFilename() method.
-    }
 
-    /**
-     * IFile constructor.
-     * @param string $filename
-     */
-    public function __construct($filename)
-    {
-        // TODO: Implement __construct() method.
-    }
 }

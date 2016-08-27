@@ -24,6 +24,9 @@
  */
 namespace Realworks\Parser;
 
+use Realworks\Exceptions\MissingParser;
+use Realworks\RealEstateType\IRealEstateType;
+
 /**
  * Class ParserFactory
  *
@@ -32,5 +35,19 @@ namespace Realworks\Parser;
  */
 class ParserFactory
 {
+    /**
+     * Build a Parser class based on an IRealEstateType.
+     * @param IRealEstateType $type
+     * @return Parser
+     * @throws MissingParser
+     */
+    public function build(IRealEstateType $type)
+    {
+        $class = '\Realworks\Parser\RealEstateParser\\' . $type;
+        if (!class_exists($class)) {
+            throw new MissingParser("Parser not found for {$type}");
+        }
 
+        return new $class;
+    }
 }

@@ -24,6 +24,8 @@
  */
 namespace Realworks\Parser;
 
+use Realworks\File\XMLFile;
+
 /**
  * Class Parser
  *
@@ -32,5 +34,13 @@ namespace Realworks\Parser;
  */
 abstract class Parser
 {
-
+    /**
+     * Parse the XML file.
+     * @param XMLFile $xmlFile
+     * @return array
+     */
+    public function parse(XMLFile $xmlFile)
+    {
+        return [];
+    }
 }

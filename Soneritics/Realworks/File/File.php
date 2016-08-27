@@ -24,13 +24,50 @@
  */
 namespace Realworks\File;
 
+use Realworks\RoleInterface\IFile;
+
 /**
  * Class File
  *
  * @package Realworks\File
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class File
+class File implements IFile
 {
+    /**
+     * Get the filename of the file.
+     * @return string
+     */
+    public function getFilename()
+    {
+        // TODO: Implement getFilename() method.
+    }
 
+    /**
+     * Get the basename of the file.
+     * @return string
+     */
+    public function getBasename()
+    {
+        // TODO: Implement getBasename() method.
+    }
+
+    /**
+     * Get the directory of the file, including a trailing (back)slash.
+     * @return string
+     */
+    public function getDirectory()
+    {
+        // TODO: Implement getDirectory() method.
+    }
+
+    /**
+     * IFile constructor.
+     * @param string $filename
+     */
+    public function __construct($filename)
+    {
+        parent::__construct($filename);
+
+    }
 }

@@ -22,27 +22,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+namespace Realworks\Exceptions;
 
 /**
- * Example file for the Realworks flow.
- * Illustrates the parsing of the 'Wonen' data.
+ * Class MissingParser
+ *
+ * @package Realworks\Exceptions
+ * @author Jordi Jolink <mail@jordijolink.nl>
  */
+class MissingParser extends \Exception
+{
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
-// Configs. When you are using this, remove the following line: $downloader->setDownloadUrl('..');
-$username = '';
-$password = '';
-
-// Step 1: Download the file
-$type = new \Realworks\RealEstateType\Wonen;
-$downloader = new \Realworks\Downloader\Downloader($username, $password, $type);
-
-# Explicitly overrule the URL, so no user/pass is needed
-$downloader->setDownloadUrl('http://xml-publish.realworks.nl/servlets/ogexport?koppeling=WEBSITE&og=WONEN&documentatie=true');
-
-$zippedContent = $downloader->download();
-
-// Step 2: Validate the zipped content
-
-// Step 3: Unpack the zipped content
+}

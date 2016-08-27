@@ -27,13 +27,27 @@ namespace Realworks\ZippedContent;
 use Realworks\RoleInterface\IValidator;
 
 /**
- * Class Validator
+ * ZippedContent Validator
  *
  * @package Realworks\ZippedContent
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
 class Validator implements IValidator
 {
+    /**
+     * @var ZippedContent
+     */
+    private $zippedContent;
+
+    /**
+     * Validator constructor.
+     * @param ZippedContent $zippedContent
+     */
+    public function __construct(ZippedContent $zippedContent)
+    {
+        $this->zippedContent = $zippedContent;
+    }
+
     /**
      * Validate the object.
      * @return boolean

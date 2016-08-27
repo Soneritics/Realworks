@@ -32,5 +32,60 @@ namespace Realworks\ZippedContent;
  */
 class Unpacker
 {
+    /**
+     * @var ZippedContent
+     */
+    private $zippedContent;
 
+    /**
+     * @var string
+     */
+    private $directory;
+
+    /**
+     * Unpacker constructor.
+     * @param ZippedContent $zippedContent
+     * @param string|null $unpackDirectory
+     */
+    public function __construct(ZippedContent $zippedContent, $unpackDirectory = null)
+    {
+        $this->setZippedContent($zippedContent);
+        if ($unpackDirectory === null) {
+            $this->setUnpackDirectory($zippedContent->getDirectory() . $zippedContent->getBasename());
+        } else {
+            $this->setUnpackDirectory($unpackDirectory);
+        }
+    }
+
+    /**
+     * Setter for a ZippedContent object.
+     * @param ZippedContent $zippedContent
+     * @return $this
+     */
+    public function setZippedContent(ZippedContent $zippedContent)
+    {
+        $this->zippedContent = $zippedContent;
+        return $this;
+    }
+
+    /**
+     * Set an unpack directory.
+     * @param string $directory
+     * @return $this
+     */
+    public function setUnpackDirectory($directory)
+    {
+        // TODO: Implementation
+        return $this;
+    }
+
+    /**
+     * Unpack the zip file.
+     * @return array of Realworks\File\File objects
+     */
+    public function unpack()
+    {
+        // TODO: implementation
+        return [];
+    }
 }
