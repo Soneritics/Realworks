@@ -79,7 +79,7 @@ class Downloader
         $this->username = $username;
         $this->password = $password;
         $this->realEstateType = $realEstateType;
-        $this->setDownloadUrlFromUserPassType();
+        $this->setDownloadUrlFromUserPassType($username, $password, $realEstateType);
         $this->setTempDir($tempDir);
     }
 
@@ -115,11 +115,12 @@ class Downloader
         $source = $this->url;
         $destination = $this->tempDir . $this->realEstateType . '.zip';
 
-        $client = new GuzzleHttp\Client;
-        $client->request('GET', $source, ['sink' => $destination]);
-
-        if ((int)$client->getStatusCode() !== 200) {
-            throw new UnableToDownload("Could not download {$source}");
+        try {
+            $contents = file_get_contents($source);
+            file_put_contents($destination, $contents);
+            $contents = null;
+        } catch (\Exception $e) {
+            throw new UnableToDownload("Could not download {$source}", $e);
         }
 
         return new ZippedContent($destination);
