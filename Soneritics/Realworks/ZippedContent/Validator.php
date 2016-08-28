@@ -24,6 +24,7 @@
  */
 namespace Realworks\ZippedContent;
 
+use Realworks\File\File;
 use Realworks\RoleInterface\IValidator;
 
 /**
@@ -54,6 +55,34 @@ class Validator implements IValidator
      */
     public function isValid()
     {
-        // TODO: Implement isValid() method.
+        # File exists
+        if (!file_exists($this->zippedContent->getFilename())) {
+            return false;
+        }
+
+        # Can open zip file
+        $zip = new \ZipArchive;
+        if ($zip->open($this->zippedContent->getFilename()) !== true) {
+            return false;
+        }
+
+        # Check if an XML and XSD file are present
+        $xmlFile = false;
+        $xsdFile = false;
+        for ($i = 0; $i < $zip->numFiles; $i++) {
+            $filename = $zip->getNameIndex($i);
+            $file = new File($filename);
+            $extension = strtolower($file->getExtension());
+
+            if ($extension === 'xml') {
+                $xmlFile = true;
+            } elseif ($extension === 'xsd') {
+                $xsdFile = true;
+            }
+        }
+
+        $zip->close();
+
+        return $xmlFile && $xsdFile;
     }
 }
