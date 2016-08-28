@@ -22,31 +22,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Realworks\ZippedContent;
-
-use Realworks\Exceptions\ZipExtensionRequired;
-use Realworks\File\File;
+namespace Realworks\Exceptions;
 
 /**
- * Class ZippedContent
+ * Class ZipExtensionRequired
  *
- * @package Realworks\ZippedContent
+ * @package Realworks\Exceptions
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class ZippedContent extends File
+class ZipExtensionRequired extends \Exception
 {
-    /**
-     * ZippedContent constructor.
-     * Checks if the ZIP extension is installed.
-     * @param string $filename
-     * @throws ZipExtensionRequired
-     */
-    public function __construct($filename)
-    {
-        if (!extension_loaded('zip')) {
-            throw new ZipExtensionRequired('The ZIP extension is required but not found on this system.');
-        }
 
-        parent::__construct($filename);
-    }
 }
