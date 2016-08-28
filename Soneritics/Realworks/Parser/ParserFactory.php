@@ -48,7 +48,7 @@ class ParserFactory
      */
     public function addCustomParser(IRealEstateType $type, Parser $parser)
     {
-        $this->customParsers[$type] = $parser;
+        $this->customParsers[(string)$type] = $parser;
         return $this;
     }
 
@@ -60,8 +60,8 @@ class ParserFactory
      */
     public function build(IRealEstateType $type)
     {
-        if (!empty($this->customParsers[$type])) {
-            return $this->customParsers[$type];
+        if (!empty($this->customParsers[(string)$type])) {
+            return $this->customParsers[(string)$type];
         }
 
         $class = '\Realworks\Parser\RealEstateParser\\' . $type;
