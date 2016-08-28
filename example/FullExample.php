@@ -83,6 +83,11 @@ if (!$xmlFileValidator->isValid()) {
 
 // Step 5: Process the XML file
 $parserFactory = new \Realworks\Parser\ParserFactory;
+
+// You can simply extend an existing parser and overwrite methods.
+// To a custom parser:
+// $parserFactory->addCustomParser($type, new CustomParser);
+
 $parser = $parserFactory->build($type);
 
 $result = $parser->parse($xmlFile);

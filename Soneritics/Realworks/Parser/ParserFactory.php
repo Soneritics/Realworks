@@ -36,6 +36,23 @@ use Realworks\RealEstateType\IRealEstateType;
 class ParserFactory
 {
     /**
+     * @var array
+     */
+    private $customParsers = [];
+
+    /**
+     * Add a custom parser for a specific IRealEstateType.
+     * @param IRealEstateType $type
+     * @param Parser $parser
+     * @return $this
+     */
+    public function addCustomParser(IRealEstateType $type, Parser $parser)
+    {
+        $this->customParsers[$type] = $parser;
+        return $this;
+    }
+
+    /**
      * Build a Parser class based on an IRealEstateType.
      * @param IRealEstateType $type
      * @return Parser
@@ -43,6 +60,10 @@ class ParserFactory
      */
     public function build(IRealEstateType $type)
     {
+        if (!empty($this->customParsers[$type])) {
+            return $this->customParsers[$type];
+        }
+
         $class = '\Realworks\Parser\RealEstateParser\\' . $type;
         if (!class_exists($class)) {
             throw new MissingParser("Parser not found for {$type}");
