@@ -34,5 +34,13 @@ use Realworks\Parser\Parser;
  */
 class BOG extends Parser
 {
-
+    /**
+     * Parse an object to a RealEstate entity.
+     * @param mixed $object
+     * @return mixed
+     */
+    protected function parseObject($object)
+    {
+        // TODO: Implement parseObject() method.
+    }
 }

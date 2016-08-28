@@ -35,12 +35,42 @@ use Realworks\File\XMLFile;
 abstract class Parser
 {
     /**
+     * @var XMLFile
+     */
+    private $xmlFile;
+
+    /**
      * Parse the XML file.
      * @param XMLFile $xmlFile
      * @return array
      */
-    public function parse(XMLFile $xmlFile)
+    final public function parse(XMLFile $xmlFile)
     {
-        return [];
+        $this->xmlFile = $xmlFile;
+        return $this->parseXML();
     }
+
+    /**
+     * Parse the XML file by invoking an XML reader.
+     * Each XML object must be processed per line by the ParseObject method.
+     * @return array
+     */
+    protected function parseXML()
+    {
+        $result = [];
+
+        $xml = simplexml_load_file($this->xmlFile->getFilename());
+        foreach ($xml->Object as $object) {
+            $result[] = $this->parseObject($object);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Parse an object to a RealEstate entity.
+     * @param mixed $object
+     * @return mixed
+     */
+    abstract protected function parseObject($object);
 }
