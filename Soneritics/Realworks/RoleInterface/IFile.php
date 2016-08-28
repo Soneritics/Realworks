@@ -39,18 +39,6 @@ interface IFile
     public function getFilename();
 
     /**
-     * Get the basename of the file.
-     * @return string
-     */
-    public function getBasename();
-
-    /**
-     * Get the directory of the file, including a trailing (back)slash.
-     * @return string
-     */
-    public function getDirectory();
-
-    /**
      * IFile constructor.
      * @param string $filename
      */

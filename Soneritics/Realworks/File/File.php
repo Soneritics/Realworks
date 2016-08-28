@@ -67,6 +67,15 @@ class File implements IFile
     }
 
     /**
+     * Get the extension of the file.
+     */
+    public function getExtension()
+    {
+        $parts = explode('.', $this->filename);
+        return $parts[count($parts) - 1];
+    }
+
+    /**
      * IFile constructor.
      * @param string $filename
      */
