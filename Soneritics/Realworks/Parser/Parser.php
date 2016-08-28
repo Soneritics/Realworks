@@ -60,8 +60,10 @@ abstract class Parser
         $result = [];
 
         $xml = simplexml_load_file($this->xmlFile->getFilename());
-        foreach ($xml->Object as $object) {
-            $result[] = $this->parseObject($object);
+        if (!empty($xml->Object)) {
+            foreach ($xml->Object as $object) {
+                $result[] = $this->parseObject($object);
+            }
         }
 
         return $result;
