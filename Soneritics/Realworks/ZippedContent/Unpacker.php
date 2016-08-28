@@ -24,6 +24,12 @@
  */
 namespace Realworks\ZippedContent;
 
+use Realworks\Exceptions\CanNotCreateDirectory;
+use Realworks\Exceptions\CanNotOpenZipFile;
+use Realworks\File\File;
+use Realworks\File\XMLFile;
+use Realworks\File\XSDFile;
+
 /**
  * Class Unpacker
  *
@@ -51,7 +57,7 @@ class Unpacker
     {
         $this->setZippedContent($zippedContent);
         if ($unpackDirectory === null) {
-            $this->setUnpackDirectory($zippedContent->getDirectory() . $zippedContent->getBasename());
+            $this->setUnpackDirectory($zippedContent->getDirectory() . 'extract_' . $zippedContent->getBasename());
         } else {
             $this->setUnpackDirectory($unpackDirectory);
         }
@@ -72,20 +78,61 @@ class Unpacker
      * Set an unpack directory.
      * @param string $directory
      * @return $this
+     * @throws CanNotCreateDirectory
      */
     public function setUnpackDirectory($directory)
     {
-        // TODO: Implementation
+        if (!file_exists($directory)) {
+            $created = @mkdir($directory, 0777, true);
+            if ($created === false) {
+                throw new CanNotCreateDirectory("Can not create directory: {$directory}");
+            }
+        }
+
+        if (!in_array(substr($directory, -1), ['/', '\\'])) {
+            $directory .= '/';
+        }
+
+        $this->directory = $directory;
         return $this;
     }
 
     /**
      * Unpack the zip file.
      * @return array of Realworks\File\File objects
+     * @throws CanNotOpenZipFile
      */
     public function unpack()
     {
-        // TODO: implementation
-        return [];
+        $result = [];
+
+        $zip = new \ZipArchive;
+        if ($zip->open($this->zippedContent->getFilename()) !== true) {
+            throw new CanNotOpenZipFile("Can not open zip file: {$this->zippedContent->getFilename()}");
+        }
+
+        $zip->extractTo($this->directory);
+        $zip->close();
+
+        foreach (scandir($this->directory) as $extractedFileName) {
+            $fullFilename = $this->directory . $extractedFileName;
+            if (!is_dir($fullFilename)) {
+                $file = new File($fullFilename);
+                $extension = strtolower($file->getExtension());
+
+                switch ($extension) {
+                    case 'xml':
+                        $result[] = new XMLFile($fullFilename);
+                        break;
+                    case 'xsd':
+                        $result[] = new XSDFile($fullFilename);
+                        break;
+                    default:
+                        $result[] = $file;
+                }
+            }
+        }
+
+        return $result;
     }
 }
