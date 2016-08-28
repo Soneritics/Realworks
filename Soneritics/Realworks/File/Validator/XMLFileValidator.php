@@ -66,9 +66,8 @@ class XMLFileValidator implements IValidator
         libxml_use_internal_errors(true);
 
         $feed = new \DOMDocument();
-        $feed->preserveWhitespace = false;
         $result = $feed->load($this->xmlFile->getFilename());
-        if($result === false) {
+        if ($result === false) {
             return false;
         }
 
