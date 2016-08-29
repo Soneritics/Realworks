@@ -39,8 +39,30 @@ class Wonen extends Parser
      * @param mixed $object
      * @return mixed
      */
-    protected function parseObject($object)
+    protected function parseData($object)
     {
-        // TODO: Implement parseObject() method.
+        return $this->parseXMLObjects($object);
+    }
+
+    /**
+     * Parse a SimpleXMLElement to a Real Estate object.
+     * @param \SimpleXMLElement $objects
+     * @return array
+     */
+    protected function parseXMLObjects(\SimpleXMLElement $objects)
+    {
+        if (!empty($objects->Object)) {
+            foreach ($objects->Object as $object) {
+                $result[] = $object;
+            }
+        }
+
+        if (!empty($objects->Project)) {
+            foreach ($objects->Project as $project) {
+                $result[] = $project;
+            }
+        }
+
+        return $result;
     }
 }

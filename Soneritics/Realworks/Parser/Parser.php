@@ -57,22 +57,14 @@ abstract class Parser
      */
     protected function parseXML()
     {
-        $result = [];
-
         $xml = simplexml_load_file($this->xmlFile->getFilename());
-        if (!empty($xml->Object)) {
-            foreach ($xml->Object as $object) {
-                $result[] = $this->parseObject($object);
-            }
-        }
-
-        return $result;
+        return $this->parseData($xml);
     }
 
     /**
-     * Parse an object to a RealEstate entity.
+     * Parse the XML into RealEstate entities.
      * @param mixed $object
      * @return mixed
      */
-    abstract protected function parseObject($object);
+    abstract protected function parseData($object);
 }

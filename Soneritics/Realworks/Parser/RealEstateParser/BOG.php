@@ -39,8 +39,8 @@ class BOG extends Parser
      * @param mixed $object
      * @return mixed
      */
-    protected function parseObject($object)
+    protected function parseData($object)
     {
-        // TODO: Implement parseObject() method.
+        // TODO: Implement parseData() method.
     }
 }
