@@ -15,6 +15,7 @@
     "satooshi/php-coveralls": "dev-master"
   },
   "autoload": {
-    "psr-4": {"Realworks\\": "Soneritics/Realworks/"}
+    "psr-4": {"Realworks\\": "Soneritics/Realworks/"},
+    "psr-4": {"RealEstate\\": "Soneritics/RealEstate/"}
   }
 }
