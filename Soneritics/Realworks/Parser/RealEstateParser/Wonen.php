@@ -24,6 +24,8 @@
  */
 namespace Realworks\Parser\RealEstateParser;
 
+use Realworks\Parser\Mappers\House;
+use Realworks\Parser\Mappers\Project;
 use Realworks\Parser\Parser;
 
 /**
@@ -34,6 +36,25 @@ use Realworks\Parser\Parser;
  */
 class Wonen extends Parser
 {
+    /**
+     * @var House
+     */
+    protected $houseMapper;
+
+    /**
+     * @var Project
+     */
+    protected $projectMapper;
+
+    /**
+     * Set up the mappers to use.
+     */
+    protected function setupMappers()
+    {
+        $this->houseMapper = new House;
+        $this->projectMapper = new Project;
+    }
+
     /**
      * Parse an object to a RealEstate entity.
      * @param mixed $object
@@ -53,13 +74,13 @@ class Wonen extends Parser
     {
         if (!empty($objects->Object)) {
             foreach ($objects->Object as $object) {
-                $result[] = $object;
+                $result[] = $this->houseMapper->map($object);
             }
         }
 
         if (!empty($objects->Project)) {
             foreach ($objects->Project as $project) {
-                $result[] = $project;
+                $result[] = $this->projectMapper->map($project);
             }
         }
 

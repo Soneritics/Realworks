@@ -40,6 +40,14 @@ abstract class Parser
     private $xmlFile;
 
     /**
+     * Parser constructor.
+     */
+    public function __construct()
+    {
+        $this->setupMappers();
+    }
+
+    /**
      * Parse the XML file.
      * @param XMLFile $xmlFile
      * @return array
@@ -67,4 +75,9 @@ abstract class Parser
      * @return mixed
      */
     abstract protected function parseData($object);
+
+    /**
+     * Set up the mappers to use.
+     */
+    abstract protected function setupMappers();
 }

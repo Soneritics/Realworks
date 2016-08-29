@@ -22,33 +22,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Realworks\Parser\RealEstateParser;
-
-use Realworks\Parser\Parser;
+namespace RealEstate;
 
 /**
- * Class BOG
+ * Class Project
  *
- * @package Realworks\Parser\RealEstateParser
+ * @package RealEstate
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class BOG extends Parser
+class Project
 {
-    /**
-     * Set up the mappers to use.
-     */
-    protected function setupMappers()
-    {
-        // TODO: implementation
-    }
 
-    /**
-     * Parse an object to a RealEstate entity.
-     * @param mixed $object
-     * @return mixed
-     */
-    protected function parseData($object)
-    {
-        // TODO: Implement parseData() method.
-    }
 }
