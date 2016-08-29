@@ -39,8 +39,8 @@ class Project extends Mapper
      */
     public function map(\SimpleXMLElement $data)
     {
-        $house = new \RealEstate\Project;
+        $project = new \RealEstate\Project;
 
-        return $house;
+        return $project;
     }
 }
