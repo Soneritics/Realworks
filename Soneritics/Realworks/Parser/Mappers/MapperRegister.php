@@ -34,12 +34,12 @@ namespace Realworks\Parser\Mappers;
 final class MapperRegister
 {
     /**
-     * @var House
+     * @var Mapper
      */
     protected $houseMapper;
 
     /**
-     * @var Project
+     * @var Mapper
      */
     protected $projectMapper;
 
