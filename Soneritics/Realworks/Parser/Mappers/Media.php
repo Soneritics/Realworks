@@ -25,12 +25,12 @@
 namespace Realworks\Parser\Mappers;
 
 /**
- * Class House
+ * Class Media
  *
  * @package Realworks\Parser\Mappers
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class House extends Mapper
+class Media extends Mapper
 {
     /**
      * Map to the specified Real Estate object.
@@ -39,64 +39,33 @@ class House extends Mapper
      */
     public function map(\SimpleXMLElement $data)
     {
-        $house = new \RealEstate\House;
+        $media = new \RealEstate\Media;
 
         # Map strings and ints
-        $strings = ['NVMVestigingNR', 'ObjectAfdeling', 'ObjectCompany', 'ObjectCode'];
-        $ints = ['ObjectTiaraID', 'ObjectSystemID'];
+        $strings = ['Groep', 'URL', 'MediaOmschrijving'];
+        $ints = ['Id'];
 
         foreach ($strings as $string) {
             if (isset($data->$string)) {
-                $house->$string = (string)$data->$string;
+                $media->$string = (string)$data->$string;
             }
         }
 
         foreach ($ints as $int) {
             if (isset($data->$int)) {
-                $house->$int = (int)$data->$int;
+                $media->$int = (int)$data->$int;
             }
         }
 
-        # Map objects
-        if (isset($data->Web)) {
-            $house->Web = $this->getMapperRegister()->getWebMapper()->map($data);
+        # Map dates
+        if (!empty($data->MediaUpdate)) {
+            $media->MediaUpdate = new \DateTime($data->MediaUpdate);
         }
 
-        if (isset($data->ObjectDetails)) {
-            $house->Web = $this->getMapperRegister()->getObjectDetailsMapper()->map($data);
+        if (!empty($data->LaatsteWijziging)) {
+            $media->LaatsteWijziging = new \DateTime($data->LaatsteWijziging);
         }
 
-        if (isset($data->Wonen)) {
-            $house->Web = $this->getMapperRegister()->getWonenMapper()->map($data);
-        }
-
-        if (isset($data->Bouwgrond)) {
-            $house->Web = $this->getMapperRegister()->getBouwgrondMapper()->map($data);
-        }
-
-        if (isset($data->OverigOG)) {
-            $house->Web = $this->getMapperRegister()->getOverigOGMapper()->map($data);
-        }
-
-        # Media list
-        if (!empty($data->MediaLijst)) {
-            $this->processMediaList($house, $data->MediaLijst);
-        }
-
-        return $house;
-    }
-
-    /**
-     * Process the media list
-     * @param \RealEstate\House $house
-     * @param \SimpleXMLElement $mediaList
-     */
-    protected function processMediaList(\RealEstate\House $house, \SimpleXMLElement $mediaList)
-    {
-        if (!empty($mediaList->Media)) {
-            foreach ($mediaList->Media as $media) {
-                $house->MediaLijst[] = $this->getMapperRegister()->getMediaMapper()->map($media);
-            }
-        }
+        return $media;
     }
 }

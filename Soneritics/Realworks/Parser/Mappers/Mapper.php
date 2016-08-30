@@ -33,6 +33,28 @@ namespace Realworks\Parser\Mappers;
 abstract class Mapper
 {
     /**
+     * @var MapperRegister
+     */
+    private $mapperRegister;
+
+    /**
+     * Mapper constructor.
+     * @param MapperRegister $mapperRegister
+     */
+    public function __construct(MapperRegister $mapperRegister)
+    {
+        $this->mapperRegister = $mapperRegister;
+    }
+
+    /**
+     * @return MapperRegister
+     */
+    protected function getMapperRegister()
+    {
+        return $this->mapperRegister;
+    }
+
+    /**
      * Map to the specified Real Estate object.
      * @param \SimpleXMLElement $data
      * @return mixed

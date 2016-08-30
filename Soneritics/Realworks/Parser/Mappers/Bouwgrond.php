@@ -22,73 +22,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace RealEstate;
+namespace Realworks\Parser\Mappers;
 
 /**
- * Class House
+ * Class Bouwgrond
  *
- * @package RealEstate
+ * @package Realworks\Parser\Mappers
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class House
+class Bouwgrond extends Mapper
 {
     /**
-     * @var string
+     * Map to the specified Real Estate object.
+     * @param \SimpleXMLElement $data
+     * @return mixed
      */
-    public $NVMVestigingNR;
+    public function map(\SimpleXMLElement $data)
+    {
 
-    /**
-     * @var string|null
-     */
-    public $ObjectAfdeling;
-
-    /**
-     * @var string|null
-     */
-    public $ObjectCompany;
-
-    /**
-     * @var int|null
-     */
-    public $ObjectTiaraID;
-
-    /**
-     * @var int|null
-     */
-    public $ObjectSystemID;
-
-    /**
-     * @var string|null
-     */
-    public $ObjectCode;
-
-    /**
-     * @var ObjectDetails
-     */
-    public $ObjectDetails;
-
-    /**
-     * @var array
-     */
-    public $MediaLijst = [];
-
-    /**
-     * @var Web|null
-     */
-    public $Web;
-
-    /**
-     * @var Wonen|null
-     */
-    public $Wonen;
-
-    /**
-     * @var Bouwgrond|null
-     */
-    public $Bouwgrond;
-
-    /**
-     * @var OverigOG|null
-     */
-    public $OverigOG;
+    }
 }

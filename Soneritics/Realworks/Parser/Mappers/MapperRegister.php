@@ -36,20 +36,56 @@ final class MapperRegister
     /**
      * @var Mapper
      */
-    protected $houseMapper;
+    private $houseMapper;
 
     /**
      * @var Mapper
      */
-    protected $projectMapper;
+    private $projectMapper;
+
+    /**
+     * @var Mapper
+     */
+    private $objectDetailsMapper;
+
+    /**
+     * @var Mapper
+     */
+    private $webMapper;
+
+    /**
+     * @var Mapper
+     */
+    private $wonenMapper;
+
+    /**
+     * @var Mapper
+     */
+    private $bouwgrondMapper;
+
+    /**
+     * @var Mapper
+     */
+    private $overigOGMapper;
+
+    /**
+     * @var Mapper
+     */
+    private $mediaMapper;
 
     /**
      * Set up the mappers to use.
      */
     public function __construct()
     {
-        $this->houseMapper = new House;
-        $this->projectMapper = new Project;
+        $this->houseMapper = new House($this);
+        $this->projectMapper = new Project($this);
+        $this->objectDetailsMapper = new ObjectDetails($this);
+        $this->webMapper = new Web($this);
+        $this->wonenMapper = new Wonen($this);
+        $this->bouwgrondMapper = new Bouwgrond($this);
+        $this->overigOGMapper = new OverigOG($this);
+        $this->mediaMapper = new Media($this);
     }
 
     /**
@@ -64,7 +100,7 @@ final class MapperRegister
      * @param Mapper $houseMapper
      * @return MapperRegister
      */
-    public function setHouseMapper(Mapper $houseMapper)
+    public function setHouseMapper($houseMapper)
     {
         $this->houseMapper = $houseMapper;
         return $this;
@@ -79,13 +115,120 @@ final class MapperRegister
     }
 
     /**
-     * @param Mapper  $projectMapper
+     * @param Mapper $projectMapper
      * @return MapperRegister
      */
-    public function setProjectMapper(Mapper $projectMapper)
+    public function setProjectMapper($projectMapper)
     {
         $this->projectMapper = $projectMapper;
         return $this;
     }
 
+    /**
+     * @return Mapper
+     */
+    public function getObjectDetailsMapper()
+    {
+        return $this->objectDetailsMapper;
+    }
+
+    /**
+     * @param Mapper $objectDetailsMapper
+     * @return MapperRegister
+     */
+    public function setObjectDetailsMapper($objectDetailsMapper)
+    {
+        $this->objectDetailsMapper = $objectDetailsMapper;
+        return $this;
+    }
+
+    /**
+     * @return Mapper
+     */
+    public function getWebMapper()
+    {
+        return $this->webMapper;
+    }
+
+    /**
+     * @param Mapper $webMapper
+     * @return MapperRegister
+     */
+    public function setWebMapper($webMapper)
+    {
+        $this->webMapper = $webMapper;
+        return $this;
+    }
+
+    /**
+     * @return Mapper
+     */
+    public function getWonenMapper()
+    {
+        return $this->wonenMapper;
+    }
+
+    /**
+     * @param Mapper $wonenMapper
+     * @return MapperRegister
+     */
+    public function setWonenMapper($wonenMapper)
+    {
+        $this->wonenMapper = $wonenMapper;
+        return $this;
+    }
+
+    /**
+     * @return Mapper
+     */
+    public function getBouwgrondMapper()
+    {
+        return $this->bouwgrondMapper;
+    }
+
+    /**
+     * @param Mapper $bouwgrondMapper
+     * @return MapperRegister
+     */
+    public function setBouwgrondMapper($bouwgrondMapper)
+    {
+        $this->bouwgrondMapper = $bouwgrondMapper;
+        return $this;
+    }
+
+    /**
+     * @return Mapper
+     */
+    public function getOverigOGMapper()
+    {
+        return $this->overigOGMapper;
+    }
+
+    /**
+     * @param Mapper $overigOGMapper
+     * @return MapperRegister
+     */
+    public function setOverigOGMapper($overigOGMapper)
+    {
+        $this->overigOGMapper = $overigOGMapper;
+        return $this;
+    }
+
+    /**
+     * @return Mapper
+     */
+    public function getMediaMapper()
+    {
+        return $this->mediaMapper;
+    }
+
+    /**
+     * @param Mapper $mediaMapper
+     * @return MapperRegister
+     */
+    public function setMediaMapper($mediaMapper)
+    {
+        $this->mediaMapper = $mediaMapper;
+        return $this;
+    }
 }

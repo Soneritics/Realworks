@@ -25,70 +25,40 @@
 namespace RealEstate;
 
 /**
- * Class House
+ * Class Media
  *
  * @package RealEstate
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class House
+class Media
 {
+    /**
+     * @var int|null
+     */
+    public $Id;
+
     /**
      * @var string
      */
-    public $NVMVestigingNR;
+    public $Groep;
 
     /**
      * @var string|null
      */
-    public $ObjectAfdeling;
+    public $URL;
 
     /**
      * @var string|null
      */
-    public $ObjectCompany;
+    public $MediaOmschrijving;
 
     /**
-     * @var int|null
+     * @var \DateTime
      */
-    public $ObjectTiaraID;
+    public $MediaUpdate;
 
     /**
-     * @var int|null
+     * @var \DateTime
      */
-    public $ObjectSystemID;
-
-    /**
-     * @var string|null
-     */
-    public $ObjectCode;
-
-    /**
-     * @var ObjectDetails
-     */
-    public $ObjectDetails;
-
-    /**
-     * @var array
-     */
-    public $MediaLijst = [];
-
-    /**
-     * @var Web|null
-     */
-    public $Web;
-
-    /**
-     * @var Wonen|null
-     */
-    public $Wonen;
-
-    /**
-     * @var Bouwgrond|null
-     */
-    public $Bouwgrond;
-
-    /**
-     * @var OverigOG|null
-     */
-    public $OverigOG;
+    public $LaatsteWijziging;
 }
