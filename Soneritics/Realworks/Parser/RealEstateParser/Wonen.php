@@ -37,25 +37,6 @@ use Realworks\Parser\Parser;
 class Wonen extends Parser
 {
     /**
-     * @var House
-     */
-    protected $houseMapper;
-
-    /**
-     * @var Project
-     */
-    protected $projectMapper;
-
-    /**
-     * Set up the mappers to use.
-     */
-    protected function setupMappers()
-    {
-        $this->houseMapper = new House;
-        $this->projectMapper = new Project;
-    }
-
-    /**
      * Parse an object to a RealEstate entity.
      * @param mixed $object
      * @return mixed
@@ -74,7 +55,7 @@ class Wonen extends Parser
     {
         if (!empty($objects->Object)) {
             foreach ($objects->Object as $object) {
-                $result[] = $this->houseMapper->map($object);
+                $result[] = $this->mapperRegister->getHouseMapper()->map($object);
             }
         }
 

@@ -35,14 +35,6 @@ use Realworks\Parser\Parser;
 class BOG extends Parser
 {
     /**
-     * Set up the mappers to use.
-     */
-    protected function setupMappers()
-    {
-        // TODO: implementation
-    }
-
-    /**
      * Parse an object to a RealEstate entity.
      * @param mixed $object
      * @return mixed

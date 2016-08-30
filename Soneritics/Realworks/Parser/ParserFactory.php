@@ -25,6 +25,7 @@
 namespace Realworks\Parser;
 
 use Realworks\Exceptions\MissingParser;
+use Realworks\Parser\Mappers\MapperRegister;
 use Realworks\RealEstateType\IRealEstateType;
 
 /**
@@ -41,6 +42,11 @@ class ParserFactory
     private $customParsers = [];
 
     /**
+     * @var MApperRegister
+     */
+    private $mapperRegister;
+
+    /**
      * Add a custom parser for a specific IRealEstateType.
      * @param IRealEstateType $type
      * @param Parser $parser
@@ -53,6 +59,19 @@ class ParserFactory
     }
 
     /**
+     * Get the MApperRegister
+     * @return MapperRegister
+     */
+    public function getMapperRegister()
+    {
+        if (empty($this->mapperRegister)) {
+            $this->mapperRegister = new MapperRegister;
+        }
+
+        return $this->mapperRegister;
+    }
+
+    /**
      * Build a Parser class based on an IRealEstateType.
      * @param IRealEstateType $type
      * @return Parser
@@ -60,8 +79,10 @@ class ParserFactory
      */
     public function build(IRealEstateType $type)
     {
+        $mapperRegister = $this->getMapperRegister();
+
         if (!empty($this->customParsers[(string)$type])) {
-            return $this->customParsers[(string)$type];
+            return $this->customParsers[(string)$type]($mapperRegister);
         }
 
         $class = '\Realworks\Parser\RealEstateParser\\' . $type;
@@ -69,6 +90,6 @@ class ParserFactory
             throw new MissingParser("Parser not found for {$type}");
         }
 
-        return new $class;
+        return new $class($mapperRegister);
     }
 }

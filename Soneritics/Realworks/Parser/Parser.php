@@ -25,6 +25,7 @@
 namespace Realworks\Parser;
 
 use Realworks\File\XMLFile;
+use Realworks\Parser\Mappers\MapperRegister;
 
 /**
  * Class Parser
@@ -40,11 +41,16 @@ abstract class Parser
     private $xmlFile;
 
     /**
+     * @var MapperRegister
+     */
+    protected $mapperRegister;
+
+    /**
      * Parser constructor.
      */
-    public function __construct()
+    public function __construct(MapperRegister $mapperRegister)
     {
-        $this->setupMappers();
+        $this->mapperRegister = $mapperRegister;
     }
 
     /**
@@ -75,9 +81,4 @@ abstract class Parser
      * @return mixed
      */
     abstract protected function parseData($object);
-
-    /**
-     * Set up the mappers to use.
-     */
-    abstract protected function setupMappers();
 }

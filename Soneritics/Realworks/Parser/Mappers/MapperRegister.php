@@ -22,25 +22,70 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Realworks\Parser\RealEstateParser;
-
-use Realworks\Parser\Parser;
+namespace Realworks\Parser\Mappers;
 
 /**
- * Class Nieuwbouw
+ * Class MapperRegister
+ * Register mappers for a custom implementation.
  *
- * @package Realworks\Parser\RealEstateParser
+ * @package Realworks\Parser\Mappers
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class Nieuwbouw extends Parser
+final class MapperRegister
 {
     /**
-     * Parse an object to a RealEstate entity.
-     * @param mixed $object
-     * @return mixed
+     * @var House
      */
-    protected function parseData($object)
+    protected $houseMapper;
+
+    /**
+     * @var Project
+     */
+    protected $projectMapper;
+
+    /**
+     * Set up the mappers to use.
+     */
+    public function __construct()
     {
-        // TODO: Implement parseData() method.
+        $this->houseMapper = new House;
+        $this->projectMapper = new Project;
     }
+
+    /**
+     * @return Mapper
+     */
+    public function getHouseMapper()
+    {
+        return $this->houseMapper;
+    }
+
+    /**
+     * @param Mapper $houseMapper
+     * @return MapperRegister
+     */
+    public function setHouseMapper(Mapper $houseMapper)
+    {
+        $this->houseMapper = $houseMapper;
+        return $this;
+    }
+
+    /**
+     * @return Mapper
+     */
+    public function getProjectMapper()
+    {
+        return $this->projectMapper;
+    }
+
+    /**
+     * @param Mapper  $projectMapper
+     * @return MapperRegister
+     */
+    public function setProjectMapper(Mapper $projectMapper)
+    {
+        $this->projectMapper = $projectMapper;
+        return $this;
+    }
+
 }
