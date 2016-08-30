@@ -78,12 +78,6 @@ class Wonen extends Parser
             }
         }
 
-        if (!empty($objects->Project)) {
-            foreach ($objects->Project as $project) {
-                $result[] = $this->projectMapper->map($project);
-            }
-        }
-
         return $result;
     }
 }
