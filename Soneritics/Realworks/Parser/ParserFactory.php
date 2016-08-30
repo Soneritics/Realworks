@@ -59,7 +59,7 @@ class ParserFactory
     }
 
     /**
-     * Get the MApperRegister
+     * Get the MapperRegister
      * @return MapperRegister
      */
     public function getMapperRegister()
