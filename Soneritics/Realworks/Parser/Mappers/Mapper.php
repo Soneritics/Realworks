@@ -33,6 +33,24 @@ namespace Realworks\Parser\Mappers;
 abstract class Mapper
 {
     /**
+     * Fields that can be mapped to integer values.
+     * @var array
+     */
+    protected $integerMappings = [];
+
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = [];
+
+    /**
+     * Fields that can be mapped to \DateTime values.
+     * @var array
+     */
+    protected $dateTimeMappings = [];
+
+    /**
      * @var MapperRegister
      */
     private $mapperRegister;
@@ -59,5 +77,43 @@ abstract class Mapper
      * @param \SimpleXMLElement $data
      * @return mixed
      */
-    abstract public function map(\SimpleXMLElement $data);
+    public function map(\SimpleXMLElement $data)
+    {
+        $realEstateObjectClassName = (new \ReflectionClass($this))->getShortName();
+        $realEstateObject = "\RealEstate\{$realEstateObjectClassName}";
+        $object = new $realEstateObject;
+
+        # Default mappings
+        foreach ($this->stringMappings as $string) {
+            if (isset($data->$string)) {
+                $object->$string = (string)$data->$string;
+            }
+        }
+
+        foreach ($this->integerMappings as $int) {
+            if (isset($data->$int)) {
+                $object->$int = (int)$data->$int;
+            }
+        }
+
+        foreach ($this->dateTimeMappings as $date) {
+            if (isset($data->$date)) {
+                $object->$date = (int)$data->$date;
+            }
+        }
+
+        $this->mapCustomFields($object, $data);
+
+        return $object;
+    }
+
+    /**
+     * Map fields that are not default types.
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    public function mapCustomFields($object, \SimpleXMLElement $data)
+    {
+        // Overwrite in child class when custom fields need to be mapped
+    }
 }

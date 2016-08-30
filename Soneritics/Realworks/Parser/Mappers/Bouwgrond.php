@@ -32,13 +32,4 @@ namespace Realworks\Parser\Mappers;
  */
 class Bouwgrond extends Mapper
 {
-    /**
-     * Map to the specified Real Estate object.
-     * @param \SimpleXMLElement $data
-     * @return mixed
-     */
-    public function map(\SimpleXMLElement $data)
-    {
-
-    }
 }

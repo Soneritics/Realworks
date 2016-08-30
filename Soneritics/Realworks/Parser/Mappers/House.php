@@ -33,31 +33,34 @@ namespace Realworks\Parser\Mappers;
 class House extends Mapper
 {
     /**
-     * Map to the specified Real Estate object.
-     * @param \SimpleXMLElement $data
-     * @return mixed
+     * Fields that can be mapped to integer values.
+     * @var array
      */
-    public function map(\SimpleXMLElement $data)
+    protected $integerMappings = ['ObjectTiaraID', 'ObjectSystemID'];
+
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['NVMVestigingNR', 'ObjectAfdeling', 'ObjectCompany', 'ObjectCode'];
+
+    /**
+     * Map fields that are not default types.
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    public function mapCustomFields($object, \SimpleXMLElement $data)
     {
-        $house = new \RealEstate\House;
+        $this->mapHouse($object, $data);
+    }
 
-        # Map strings and ints
-        $strings = ['NVMVestigingNR', 'ObjectAfdeling', 'ObjectCompany', 'ObjectCode'];
-        $ints = ['ObjectTiaraID', 'ObjectSystemID'];
-
-        foreach ($strings as $string) {
-            if (isset($data->$string)) {
-                $house->$string = (string)$data->$string;
-            }
-        }
-
-        foreach ($ints as $int) {
-            if (isset($data->$int)) {
-                $house->$int = (int)$data->$int;
-            }
-        }
-
-        # Map objects
+    /**
+     * Map the XML data to the House object
+     * @param House $house
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapHouse(House $house, \SimpleXMLElement $data)
+    {
         if (isset($data->Web)) {
             $house->Web = $this->getMapperRegister()->getWebMapper()->map($data);
         }
@@ -78,12 +81,9 @@ class House extends Mapper
             $house->Web = $this->getMapperRegister()->getOverigOGMapper()->map($data);
         }
 
-        # Media list
         if (!empty($data->MediaLijst)) {
             $this->processMediaList($house, $data->MediaLijst);
         }
-
-        return $house;
     }
 
     /**

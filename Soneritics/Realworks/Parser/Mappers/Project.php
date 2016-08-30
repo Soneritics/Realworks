@@ -32,15 +32,4 @@ namespace Realworks\Parser\Mappers;
  */
 class Project extends Mapper
 {
-    /**
-     * Map to the specified Real Estate object.
-     * @param \SimpleXMLElement $data
-     * @return mixed
-     */
-    public function map(\SimpleXMLElement $data)
-    {
-        $project = new \RealEstate\Project;
-
-        return $project;
-    }
 }

@@ -33,39 +33,20 @@ namespace Realworks\Parser\Mappers;
 class Media extends Mapper
 {
     /**
-     * Map to the specified Real Estate object.
-     * @param \SimpleXMLElement $data
-     * @return mixed
+     * Fields that can be mapped to integer values.
+     * @var array
      */
-    public function map(\SimpleXMLElement $data)
-    {
-        $media = new \RealEstate\Media;
+    protected $integerMappings = ['Id'];
 
-        # Map strings and ints
-        $strings = ['Groep', 'URL', 'MediaOmschrijving'];
-        $ints = ['Id'];
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['Groep', 'URL', 'MediaOmschrijving'];
 
-        foreach ($strings as $string) {
-            if (isset($data->$string)) {
-                $media->$string = (string)$data->$string;
-            }
-        }
-
-        foreach ($ints as $int) {
-            if (isset($data->$int)) {
-                $media->$int = (int)$data->$int;
-            }
-        }
-
-        # Map dates
-        if (!empty($data->MediaUpdate)) {
-            $media->MediaUpdate = new \DateTime($data->MediaUpdate);
-        }
-
-        if (!empty($data->LaatsteWijziging)) {
-            $media->LaatsteWijziging = new \DateTime($data->LaatsteWijziging);
-        }
-
-        return $media;
-    }
+    /**
+     * Fields that can be mapped to \DateTime values.
+     * @var array
+     */
+    protected $dateTimeMappings = ['MediaUpdate', 'LaatsteWijziging'];
 }
