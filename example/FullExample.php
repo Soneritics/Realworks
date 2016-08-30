@@ -88,6 +88,10 @@ $parserFactory = new \Realworks\Parser\ParserFactory;
 // To a custom parser:
 // $parserFactory->addCustomParser($type, new CustomParser);
 
+// You can overwrite the default mappers using the MapperRegister like this:
+// $mapperRegister = $parserFactory->getMapperRegistry();
+// $mapperRegister->setHouseMapper(new CustomHouseMapper);
+
 $parser = $parserFactory->build($type);
 
 $result = $parser->parse($xmlFile);
