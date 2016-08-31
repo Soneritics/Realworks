@@ -51,6 +51,18 @@ abstract class Mapper
     protected $dateTimeMappings = [];
 
     /**
+     * Fields that can be mapped to boolean values.
+     * @var array
+     */
+    protected $booleanMappings = [];
+
+    /**
+     * Arrays that contain strings.
+     * @var array
+     */
+    protected $stringArrayMappings = [];
+
+    /**
      * @var MapperRegister
      */
     private $mapperRegister;
