@@ -32,5 +32,28 @@ namespace RealEstate;
  */
 class Web
 {
+    /**
+     * @var boolean|mull
+     */
+    public $PrijsTonen;
 
+    /**
+     * @var int|null
+     */
+    public $Prioriteit;
+
+    /**
+     * @var string|null
+     */
+    public $Magazine;
+
+    /**
+     * @var string|null
+     */
+    public $KorteOmschrijving;
+
+    /**
+     * @var OpenHuis
+     */
+    public $OpenHuis;
 }

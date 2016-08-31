@@ -25,60 +25,30 @@
 namespace RealEstate;
 
 /**
- * Class OverigOG
+ * Class Hoofdtuin
  *
  * @package RealEstate
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class OverigOG
+class Hoofdtuin
 {
     /**
-     * @var OverigOGObject
+     * @var string
      */
-    public $InpandigeGarage;
+    public $Type;
 
     /**
-     * @var OverigOGObject
+     * @var string
      */
-    public $Garagebox;
+    public $Positie;
 
     /**
-     * @var OverigOGObject
+     * @var boolean|null
      */
-    public $Parkeerkelder;
+    public $Achterom;
 
     /**
-     * @var OverigOGObject
+     * @var Afmetingen|null
      */
-    public $Parkeerplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Berging;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Woonwagenstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Stacaravanstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Ligplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Onderstuk;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Opslagruimte;
+    public $Afmetingen;
 }

@@ -25,60 +25,20 @@
 namespace RealEstate;
 
 /**
- * Class OverigOG
+ * Class InternationaalAdres
  *
  * @package RealEstate
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class OverigOG
+class InternationaalAdres extends Adres
 {
     /**
-     * @var OverigOGObject
+     * @var string
      */
-    public $InpandigeGarage;
+    public $Adresregel1;
 
     /**
-     * @var OverigOGObject
+     * @var string|null
      */
-    public $Garagebox;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Parkeerkelder;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Parkeerplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Berging;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Woonwagenstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Stacaravanstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Ligplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Onderstuk;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Opslagruimte;
+    public $Adresregel2;
 }

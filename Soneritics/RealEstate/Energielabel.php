@@ -25,60 +25,25 @@
 namespace RealEstate;
 
 /**
- * Class OverigOG
+ * Class Energielabel
  *
  * @package RealEstate
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class OverigOG
+class Energielabel
 {
     /**
-     * @var OverigOGObject
+     * @var string
      */
-    public $InpandigeGarage;
+    public $Energieklasse;
 
     /**
-     * @var OverigOGObject
+     * @var double
      */
-    public $Garagebox;
+    public $EnergieIndex;
 
     /**
-     * @var OverigOGObject
+     * @var \DateTime
      */
-    public $Parkeerkelder;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Parkeerplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Berging;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Woonwagenstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Stacaravanstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Ligplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Onderstuk;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Opslagruimte;
+    public $Einddatum;
 }

@@ -25,60 +25,35 @@
 namespace RealEstate;
 
 /**
- * Class OverigOG
+ * Class CVKetel
  *
  * @package RealEstate
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class OverigOG
+class CVKetel
 {
     /**
-     * @var OverigOGObject
+     * @var string|null
      */
-    public $InpandigeGarage;
+    public $CVKetelType;
 
     /**
-     * @var OverigOGObject
+     * @var string|null
      */
-    public $Garagebox;
+    public $Bouwjaar;
 
     /**
-     * @var OverigOGObject
+     * @var string|null
      */
-    public $Parkeerkelder;
+    public $Brandstof;
 
     /**
-     * @var OverigOGObject
+     * @var string|null
      */
-    public $Parkeerplaats;
+    public $Eigendom;
 
     /**
-     * @var OverigOGObject
+     * @var boolean|null
      */
-    public $Berging;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Woonwagenstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Stacaravanstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Ligplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Onderstuk;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Opslagruimte;
+    public $Combiketel;
 }

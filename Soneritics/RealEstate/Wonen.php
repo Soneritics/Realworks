@@ -32,5 +32,23 @@ namespace RealEstate;
  */
 class Wonen
 {
+    /**
+     * @var WonenDetails
+     */
+    public $WonenDetails;
 
+    /**
+     * @var WoningType
+     */
+    public $WoningType;
+
+    /**
+     * @var Verdiepingen
+     */
+    public $Verdiepingen;
+
+    /**
+     * @var Woonlagen
+     */
+    public $Woonlagen;
 }

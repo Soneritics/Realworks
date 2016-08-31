@@ -32,5 +32,88 @@ namespace RealEstate;
  */
 class ObjectDetails
 {
+    /**
+     * @var Adres
+     */
+    public $Adres;
 
+    /**
+     * @var Koop|null
+     */
+    public $Koop;
+
+    /**
+     * @var Huur|null
+     */
+    public $Huur;
+
+    /**
+     * @var int|null
+     */
+    public $ServicekostenPerMaand;
+
+    /**
+     * @var string
+     */
+    public $Aanvaarding;
+
+    /**
+     * @var \DateTime
+     */
+    public $DatumAanvaarding;
+
+    /**
+     * @var string|null
+     */
+    public $ToelichtingAanvaarding;
+
+    /**
+     * @var string
+     */
+    public $ObjectAanmelding;
+
+    /**
+     * @var Koopmengvorm|null
+     */
+    public $Koopmengvorm;
+
+    /**
+     * @var \DateTime
+     */
+    public $DatumInvoer;
+
+    /**
+     * @var \DateTime|null
+     */
+    public $DatumWijziging;
+
+    /**
+     * @var \DateTime|null
+     */
+    public $DatumVeiling;
+
+    /**
+     * @var StatusBeschikbaarheid
+     */
+    public $StatusBeschikbaarheid;
+
+    /**
+     * @var string
+     */
+    public $Bouwvorm;
+
+    /**
+     * @var array
+     */
+    public $Internetplaatsingen = [];
+
+    /**
+     * @var string (max 10k characters)
+     */
+    public $Aanbiedingstekst;
+
+    /**
+     * @var CombinatieObject|null
+     */
+    public $CombinatieObject;
 }

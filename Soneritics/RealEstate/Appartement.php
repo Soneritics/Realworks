@@ -25,60 +25,45 @@
 namespace RealEstate;
 
 /**
- * Class OverigOG
+ * Class Appartement
  *
  * @package RealEstate
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class OverigOG
+class Appartement extends WoningType
 {
     /**
-     * @var OverigOGObject
+     * @var string
      */
-    public $InpandigeGarage;
+    public $SoortAppartement;
 
     /**
-     * @var OverigOGObject
+     * @var string|null
      */
-    public $Garagebox;
+    public $KenmerkAppartement;
 
     /**
-     * @var OverigOGObject
+     * @var string|null
      */
-    public $Parkeerkelder;
+    public $KwaliteitAppartement;
 
     /**
-     * @var OverigOGObject
+     * @var boolean
      */
-    public $Parkeerplaats;
+    public $OpenPortiek;
 
     /**
-     * @var OverigOGObject
+     * @var int|null
      */
-    public $Berging;
+    public $Woonlaag;
 
     /**
-     * @var OverigOGObject
+     * @var int|null
      */
-    public $Woonwagenstandplaats;
+    public $AantalWoonlagen;
 
     /**
-     * @var OverigOGObject
+     * @var boolean|null
      */
-    public $Stacaravanstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Ligplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Onderstuk;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Opslagruimte;
+    public $VVEChecklistAanwezig;
 }

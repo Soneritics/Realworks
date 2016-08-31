@@ -25,60 +25,30 @@
 namespace RealEstate;
 
 /**
- * Class OverigOG
+ * Class BOGObject
  *
  * @package RealEstate
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class OverigOG
+class BOGObject extends CombinatieObject
 {
     /**
-     * @var OverigOGObject
+     * @var string
      */
-    public $InpandigeGarage;
+    public $Type;
 
     /**
-     * @var OverigOGObject
+     * @var string
      */
-    public $Garagebox;
+    public $Situatie;
 
     /**
-     * @var OverigOGObject
+     * @var int|null
      */
-    public $Parkeerkelder;
+    public $Oppervlakte;
 
     /**
-     * @var OverigOGObject
+     * @var string
      */
-    public $Parkeerplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Berging;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Woonwagenstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Stacaravanstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Ligplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Onderstuk;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Opslagruimte;
+    public $Status;
 }

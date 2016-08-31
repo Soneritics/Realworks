@@ -25,60 +25,20 @@
 namespace RealEstate;
 
 /**
- * Class OverigOG
+ * Class BadkamerType
  *
  * @package RealEstate
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class OverigOG
+class BadkamerType
 {
     /**
-     * @var OverigOGObject
+     * @var array
      */
-    public $InpandigeGarage;
+    public $Voorzieningen = [];
 
     /**
-     * @var OverigOGObject
+     * @var Afmetingen|null
      */
-    public $Garagebox;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Parkeerkelder;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Parkeerplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Berging;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Woonwagenstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Stacaravanstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Ligplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Onderstuk;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Opslagruimte;
+    public $Afmetingen;
 }

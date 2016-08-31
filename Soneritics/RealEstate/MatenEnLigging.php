@@ -25,60 +25,40 @@
 namespace RealEstate;
 
 /**
- * Class OverigOG
+ * Class MatenEnLigging
  *
  * @package RealEstate
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class OverigOG
+class MatenEnLigging
 {
     /**
-     * @var OverigOGObject
+     * @var array of strings
      */
-    public $InpandigeGarage;
+    public $Liggingen = [];
 
     /**
-     * @var OverigOGObject
+     * @var int
      */
-    public $Garagebox;
+    public $Inhoud;
 
     /**
-     * @var OverigOGObject
+     * @var int
      */
-    public $Parkeerkelder;
+    public $GebruiksoppervlakteWoonfunctie;
 
     /**
-     * @var OverigOGObject
+     * @var int|null
      */
-    public $Parkeerplaats;
+    public $GebruiksoppervlakteOverigeFuncties;
 
     /**
-     * @var OverigOGObject
+     * @var int|null
      */
-    public $Berging;
+    public $BuitenruimtesGebouwgebondenOfVrijstaand;
 
     /**
-     * @var OverigOGObject
+     * @var int|null
      */
-    public $Woonwagenstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Stacaravanstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Ligplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Onderstuk;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Opslagruimte;
+    public $PerceelOppervlakte;
 }

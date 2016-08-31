@@ -32,5 +32,33 @@ namespace RealEstate;
  */
 class Bouwgrond
 {
+    /**
+     * @var string|null
+     */
+    public $HuidigeBestemming;
 
+    /**
+     * @var string|null
+     */
+    public $HuidigGebruik;
+
+    /**
+     * @var int
+     */
+    public $Oppervlakte;
+
+    /**
+     * @var boolean
+     */
+    public $Bouwrijp;
+
+    /**
+     * @var array of strings
+     */
+    public $Liggingen = [];
+
+    /**
+     * @var string|null
+     */
+    public $Toelichting;
 }

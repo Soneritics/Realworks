@@ -25,60 +25,20 @@
 namespace RealEstate;
 
 /**
- * Class OverigOG
+ * Class WOZ
  *
  * @package RealEstate
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class OverigOG
+class WOZ
 {
     /**
-     * @var OverigOGObject
+     * @var int
      */
-    public $InpandigeGarage;
+    public $WOZWaarde;
 
     /**
-     * @var OverigOGObject
+     * @var \DateTime
      */
-    public $Garagebox;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Parkeerkelder;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Parkeerplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Berging;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Woonwagenstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Stacaravanstandplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Ligplaats;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Onderstuk;
-
-    /**
-     * @var OverigOGObject
-     */
-    public $Opslagruimte;
+    public $WOZWaardePeildatum;
 }
