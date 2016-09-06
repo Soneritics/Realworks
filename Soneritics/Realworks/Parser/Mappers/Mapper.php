@@ -57,6 +57,12 @@ abstract class Mapper
     protected $booleanMappings = [];
 
     /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $objectMappings = [];
+
+    /**
      * Arrays that contain strings.
      * @var array
      */
@@ -92,12 +98,15 @@ abstract class Mapper
     public function map(\SimpleXMLElement $data)
     {
         $realEstateObjectClassName = (new \ReflectionClass($this))->getShortName();
-        $realEstateObject = "\RealEstate\{$realEstateObjectClassName}";
+        $realEstateObject = '\RealEstate\\' . $realEstateObjectClassName;
         $object = new $realEstateObject;
 
         $this->mapStrings($object, $data);
         $this->mapIntegers($object, $data);
+        $this->mapBooleans($object, $data);
         $this->mapDateTime($object, $data);
+        $this->mapObjects($object, $data);
+        $this->mapStringArray($object, $data);
         $this->mapCustomFields($object, $data);
 
         return $object;
@@ -151,6 +160,67 @@ abstract class Mapper
         foreach ($this->dateTimeMappings as $date) {
             if (isset($data->$date)) {
                 $object->$date = (int)$data->$date;
+            }
+        }
+    }
+
+    /**
+     * Map booleans
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapBooleans($object, \SimpleXMLElement $data)
+    {
+        $boolValues = ['ja', '1', 'yes', 'true'];
+        foreach ($this->stringMappings as $string) {
+            if (isset($data->$string)) {
+                $object->$string = in_array(strtolower($data->$string), $boolValues);
+            }
+        }
+    }
+
+    /**
+     * Map objects
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapObjects($object, \SimpleXMLElement $data)
+    {
+        foreach ($this->objectMappings as $objectMapping) {
+            if (isset($data->$objectMapping)) {
+                $mapper = $this->getMapperRegister()->{"get{$objectMapping}Mapper"}();
+                $object->$objectMapping = $mapper->map($data->$objectMapping);
+            }
+        }
+    }
+
+    /**
+     * Map a string array
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapStringArray($object, \SimpleXMLElement $data)
+    {
+        foreach ($this->stringArrayMappings as $stringArray) {
+            $object->$stringArray = [];
+            $this->getStringsFromNestedArray($data->$stringArray, $object->$stringArray);
+
+            print_r($object->$stringArray);die;
+        }
+    }
+
+    /**
+     * Find all strings in a nested array/XMLObject.
+     * @param \SimpleXMLElement $data
+     * @param array $strings Reference to an array to be filled
+     */
+    private function getStringsFromNestedArray(\SimpleXMLElement $data, array &$strings)
+    {
+        foreach ((array)$data as $item) {
+            if (!is_string($item)) {
+                $this->getStringsFromNestedArray($item, $strings);
+            } else {
+                $strings[] = (string)$item;
             }
         }
     }
