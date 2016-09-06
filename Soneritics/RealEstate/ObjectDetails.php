@@ -103,7 +103,7 @@ class ObjectDetails
     public $Bouwvorm;
 
     /**
-     * @var array
+     * @var array of strings
      */
     public $Internetplaatsingen = [];
 
