@@ -32,4 +32,21 @@ namespace Realworks\Parser\Mappers;
  */
 class Energielabel extends Mapper
 {
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['Energieklasse'];
+
+    /**
+     * Fields that can be mapped to \DateTime values.
+     * @var array
+     */
+    protected $dateTimeMappings = ['Einddatum'];
+
+    /**
+     * Fields that can be mapped to double values.
+     * @var array
+     */
+    protected $doubleMappings = ['EnergieIndex'];
 }

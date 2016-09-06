@@ -230,10 +230,10 @@ abstract class Mapper
 
     /**
      * Find all strings in a nested array/XMLObject.
-     * @param \SimpleXMLElement $data
+     * @param \SimpleXMLElement|array $data
      * @param array $strings Reference to an array to be filled
      */
-    private function getStringsFromNestedArray(\SimpleXMLElement $data, array &$strings)
+    private function getStringsFromNestedArray($data, array &$strings)
     {
         foreach ((array)$data as $item) {
             if (!is_string($item)) {

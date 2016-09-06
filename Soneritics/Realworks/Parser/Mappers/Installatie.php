@@ -32,4 +32,15 @@ namespace Realworks\Parser\Mappers;
  */
 class Installatie extends Mapper
 {
+    /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $objectMappings = ['CVKetel'];
+
+    /**
+     * Arrays that contain strings.
+     * @var array
+     */
+    protected $stringArrayMappings = ['SoortenVerwarming', 'SoortenWarmWater'];
 }

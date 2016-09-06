@@ -32,4 +32,9 @@ namespace Realworks\Parser\Mappers;
  */
 class OpenHuis extends Mapper
 {
+    /**
+     * Fields that can be mapped to \DateTime values.
+     * @var array
+     */
+    protected $dateTimeMappings = ['Vanaf', 'Tot'];
 }

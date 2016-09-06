@@ -33,7 +33,7 @@ namespace RealEstate;
 class WoonkamerType
 {
     /**
-     * @var array
+     * @var array of strings
      */
     public $Types = [];
 

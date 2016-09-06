@@ -32,4 +32,21 @@ namespace Realworks\Parser\Mappers;
  */
 class Bouwjaar extends Mapper
 {
+    /**
+     * Fields that can be mapped to boolean values.
+     * @var array
+     */
+    protected $booleanMappings = ['InAanbouw'];
+
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['Periode'];
+
+    /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $objectMappings = ['JaarOmschrijving'];
 }

@@ -32,4 +32,15 @@ namespace Realworks\Parser\Mappers;
  */
 class Diversen extends Mapper
 {
+    /**
+     * Arrays that contain strings.
+     * @var array
+     */
+    protected $stringArrayMappings = ['Bijzonderheden', 'Isolatievormen'];
+
+    /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $objectMappings = ['Dak'];
 }

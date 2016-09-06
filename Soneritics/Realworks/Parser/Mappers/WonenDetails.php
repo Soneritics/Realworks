@@ -32,4 +32,21 @@ namespace Realworks\Parser\Mappers;
  */
 class WonenDetails extends Mapper
 {
+    /**
+     * Fields that can be mapped to integer values.
+     * @var array
+     */
+    protected $integerMappings = ['', '', ''];
+
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['', '', ''];
+
+    /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $objectMappings = ['', '', ''];
 }

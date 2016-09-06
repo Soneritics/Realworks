@@ -32,4 +32,21 @@ namespace Realworks\Parser\Mappers;
  */
 class Garage extends Mapper
 {
+    /**
+     * Fields that can be mapped to integer values.
+     * @var array
+     */
+    protected $integerMappings = ['Capaciteit', 'TotaalAantalGarages'];
+
+    /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $objectMappings = ['Afmetingen'];
+
+    /**
+     * Arrays that contain strings.
+     * @var array
+     */
+    protected $stringArrayMappings = ['Soorten', 'Voorzieningen', 'Isolatievormen'];
 }

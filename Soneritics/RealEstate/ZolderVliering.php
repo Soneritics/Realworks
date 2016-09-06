@@ -33,7 +33,7 @@ namespace RealEstate;
 class ZolderVliering extends Woonlaag
 {
     /**
-     * @var array
+     * @var array of strings
      */
     public $ZolderVlieringOpties = [];
 }

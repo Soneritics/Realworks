@@ -32,4 +32,15 @@ namespace Realworks\Parser\Mappers;
  */
 class Bestemming extends Mapper
 {
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['HuidigGebruik', 'HuidigeBestemming'];
+
+    /**
+     * Fields that can be mapped to boolean values.
+     * @var array
+     */
+    protected $booleanMappings = ['PermanenteBewoning', 'Recreatiewoning'];
 }

@@ -32,4 +32,9 @@ namespace Realworks\Parser\Mappers;
  */
 class ZolderVliering extends Mapper
 {
+    /**
+     * Arrays that contain strings.
+     * @var array
+     */
+    protected $stringArrayMappings = ['ZolderVlieringOpties'];
 }

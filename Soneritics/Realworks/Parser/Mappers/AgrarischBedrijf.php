@@ -32,4 +32,9 @@ namespace Realworks\Parser\Mappers;
  */
 class AgrarischBedrijf extends Mapper
 {
+    /**
+     * Fields that can be mapped to integer values.
+     * @var array
+     */
+    protected $integerMappings = ['ObjectID'];
 }

@@ -32,4 +32,27 @@ namespace Realworks\Parser\Mappers;
  */
 class Bouwgrond extends Mapper
 {
+    /**
+     * Fields that can be mapped to integer values.
+     * @var array
+     */
+    protected $integerMappings = ['Oppervlakte'];
+
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['HuidigeBestemming', 'HuidigGebruik', 'Toelichting'];
+
+    /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $booleanMappings = ['Bouwrijp'];
+
+    /**
+     * Arrays that contain strings.
+     * @var array
+     */
+    protected $stringArrayMappings = ['Liggingen'];
 }

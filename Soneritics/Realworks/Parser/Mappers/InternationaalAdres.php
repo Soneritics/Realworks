@@ -32,4 +32,9 @@ namespace Realworks\Parser\Mappers;
  */
 class InternationaalAdres extends Mapper
 {
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['Woonplaats', 'Land', 'Adresregel1', 'Adresregel2'];
 }

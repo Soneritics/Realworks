@@ -32,4 +32,15 @@ namespace Realworks\Parser\Mappers;
  */
 class WOZ extends Mapper
 {
+    /**
+     * Fields that can be mapped to integer values.
+     * @var array
+     */
+    protected $integerMappings = ['WOZWaarde'];
+
+    /**
+     * Fields that can be mapped to \DateTime values.
+     * @var array
+     */
+    protected $dateTimeMappings = ['WOZWaardePeildatum'];
 }

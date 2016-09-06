@@ -32,4 +32,21 @@ namespace Realworks\Parser\Mappers;
  */
 class Appartement extends Mapper
 {
+    /**
+     * Fields that can be mapped to integer values.
+     * @var array
+     */
+    protected $integerMappings = ['Woonlaag', 'AantalWoonlagen'];
+
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['SoortAppartement', 'KenmerkAppartement', 'KwaliteitAppartement'];
+
+    /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $booleanMappings = ['OpenPortiek', 'VVEChecklistAanwezig'];
 }

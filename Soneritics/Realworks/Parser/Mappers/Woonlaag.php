@@ -32,4 +32,35 @@ namespace Realworks\Parser\Mappers;
  */
 class Woonlaag extends Mapper
 {
+    /**
+     * Fields that can be mapped to integer values.
+     * @var array
+     */
+    protected $integerMappings = ['VerdiepingNr', 'AantalKamers', 'AantalSlaapkamers'];
+
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['Naam', 'OverigeRuimten', 'Ligging'];
+
+    /**
+     * Map fields that are not default types.
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapCustomFields($object, \SimpleXMLElement $data)
+    {
+        if (!empty($data->Woonkamer)) {
+			$object->Woonkamer = $this->getMapperRegister()->getWoonkamerTypeMapper()->map($data->Woonkamer);
+		}
+
+        if (!empty($data->Keuken)) {
+			$object->Keuken = $this->getMapperRegister()->getKeukenTypeMapper()->map($data->Keuken);
+		}
+
+        if (!empty($data->Badkamer)) {
+			$object->Badkamer = $this->getMapperRegister()->getBadkamerTypeMapper()->map($data->Badkamer);
+		}
+    }
 }

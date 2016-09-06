@@ -48,7 +48,7 @@ class Koop
     public $KoopConditie;
 
     /**
-     * @var sting|null
+     * @var string|null
      */
     public $KoopSpecificatie;
 

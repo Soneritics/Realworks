@@ -32,4 +32,57 @@ namespace Realworks\Parser\Mappers;
  */
 class ObjectDetails extends Mapper
 {
+    /**
+     * Fields that can be mapped to integer values.
+     * @var array
+     */
+    protected $integerMappings = ['ServicekostenPerMaand'];
+
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['Aanvaarding', 'ToelichtingAanvaarding', 'ObjectAanmelding', 'Bouwvorm', 'Aanbiedingstekst'];
+
+    /**
+     * Fields that can be mapped to \DateTime values.
+     * @var array
+     */
+    protected $dateTimeMappings = ['DatumAanvaarding', 'DatumInvoer', 'DatumWijziging', 'DatumVeiling'];
+
+    /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $objectMappings = ['Koop', 'Huur', 'Koopmengvorm', 'StatusBeschikbaarheid'];
+
+    /**
+     * Arrays that contain strings.
+     * @var array
+     */
+    protected $stringArrayMappings = ['Internetplaatsingen'];
+
+    /**
+     * Map fields that are not default types.
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapCustomFields($object, \SimpleXMLElement $data)
+    {
+        if (!empty($data->Adres->Nederland)) {
+            $object->Adres = $this->getMapperRegister()->getNederlandsAdresMapper()->map($data->Adres->Nederland);
+        }
+
+        if (!empty($data->Adres->Internationaal)) {
+            $object->Adres = $this->getMapperRegister()->getInternationaalAdresMapper()->map($data->Adres->Internationaal);
+        }
+
+        if (!empty($data->CombinatieObject->BOGObject)) {
+            $object->CombinatieObject = $this->getMapperRegister()->getbogObjectMapper()->map($data->CombinatieObject->BOGObject);
+        }
+
+        if (!empty($data->CombinatieObject->AgrarischBedrijf)) {
+            $object->CombinatieObject = $this->getMapperRegister()->getAgrarischBedrijfMapper()->map($data->CombinatieObject->AgrarischBedrijf);
+        }
+    }
 }

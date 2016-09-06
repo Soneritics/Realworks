@@ -32,4 +32,21 @@ namespace Realworks\Parser\Mappers;
  */
 class Hoofdtuin extends Mapper
 {
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['Type', 'Positie'];
+
+    /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $objectMappings = ['Afmetingen'];
+
+    /**
+     * Fields that can be mapped to boolean values.
+     * @var array
+     */
+    protected $booleanMappings = ['Achterom'];
 }

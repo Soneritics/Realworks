@@ -33,52 +33,52 @@ namespace RealEstate;
 class OverigOG
 {
     /**
-     * @var OverigOGObject
+     * @var InpandigeGarage
      */
     public $InpandigeGarage;
 
     /**
-     * @var OverigOGObject
+     * @var Garagebox
      */
     public $Garagebox;
 
     /**
-     * @var OverigOGObject
+     * @var Parkeerkelder
      */
     public $Parkeerkelder;
 
     /**
-     * @var OverigOGObject
+     * @var Parkeerplaats
      */
     public $Parkeerplaats;
 
     /**
-     * @var OverigOGObject
+     * @var Berging
      */
     public $Berging;
 
     /**
-     * @var OverigOGObject
+     * @var Woonwagenstandplaats
      */
     public $Woonwagenstandplaats;
 
     /**
-     * @var OverigOGObject
+     * @var Stacaravanstandplaats
      */
     public $Stacaravanstandplaats;
 
     /**
-     * @var OverigOGObject
+     * @var Ligplaats
      */
     public $Ligplaats;
 
     /**
-     * @var OverigOGObject
+     * @var Onderstuk
      */
     public $Onderstuk;
 
     /**
-     * @var OverigOGObject
+     * @var Opslagruimte
      */
     public $Opslagruimte;
 }

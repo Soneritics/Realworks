@@ -32,4 +32,9 @@ namespace Realworks\Parser\Mappers;
  */
 class Onderhoud extends Mapper
 {
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['Name', 'Waardering', ''];
 }

@@ -32,4 +32,21 @@ namespace Realworks\Parser\Mappers;
  */
 class StatusBeschikbaarheid extends Mapper
 {
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['Status'];
+
+    /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $objectMappings = ['VerkochtOnderVoorbehoud'];
+
+    /**
+     * Fields that can be mapped to \DateTime values.
+     * @var array
+     */
+    protected $dateTimeMappings = ['TransactieDatum'];
 }

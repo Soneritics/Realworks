@@ -32,4 +32,21 @@ namespace Realworks\Parser\Mappers;
  */
 class WoonkamerType extends Mapper
 {
+    /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $objectMappings = ['Afmetingen'];
+
+    /**
+     * Arrays that contain strings.
+     * @var array
+     */
+    protected $stringArrayMappings = ['Types'];
+
+    /**
+     * Fields that can be mapped to boolean values.
+     * @var array
+     */
+    protected $booleanMappings = ['Trap'];
 }

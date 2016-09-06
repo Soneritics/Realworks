@@ -32,4 +32,21 @@ namespace Realworks\Parser\Mappers;
  */
 class SchuurBerging extends Mapper
 {
+    /**
+     * Fields that can be mapped to integer values.
+     * @var array
+     */
+    protected $integerMappings = ['TotaalAantal'];
+
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['Soort'];
+
+    /**
+     * Arrays that contain strings.
+     * @var array
+     */
+    protected $stringArrayMappings = ['Voorzieningen', 'Isolatievormen'];
 }

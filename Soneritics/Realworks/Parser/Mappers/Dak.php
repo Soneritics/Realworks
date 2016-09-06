@@ -32,4 +32,15 @@ namespace Realworks\Parser\Mappers;
  */
 class Dak extends Mapper
 {
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['Type', 'Toelichting'];
+
+    /**
+     * Arrays that contain strings.
+     * @var array
+     */
+    protected $stringArrayMappings = ['Materialen'];
 }

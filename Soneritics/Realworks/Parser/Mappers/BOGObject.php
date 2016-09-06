@@ -32,4 +32,15 @@ namespace Realworks\Parser\Mappers;
  */
 class BOGObject extends Mapper
 {
+    /**
+     * Fields that can be mapped to integer values.
+     * @var array
+     */
+    protected $integerMappings = ['ObjectID', 'Oppervlakte'];
+
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['Type', 'Situatie', 'Status'];
 }

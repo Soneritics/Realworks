@@ -32,4 +32,15 @@ namespace Realworks\Parser\Mappers;
  */
 class OverigOGObject extends Mapper
 {
+    /**
+     * Fields that can be mapped to integer values.
+     * @var array
+     */
+    protected $integerMappings = ['Capaciteit', 'Afmetingen', 'Toelichting'];
+
+    /**
+     * Arrays that contain strings.
+     * @var array
+     */
+    protected $stringArrayMappings = ['Voorzieningen', 'Isolatievormen'];
 }

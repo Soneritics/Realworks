@@ -32,4 +32,21 @@ namespace Realworks\Parser\Mappers;
  */
 class Tuin extends Mapper
 {
+    /**
+     * Fields that can be mapped to integer values.
+     * @var array
+     */
+    protected $integerMappings = ['TotaleOppervlakte'];
+
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['Kwaliteit'];
+
+    /**
+     * Arrays that contain strings.
+     * @var array
+     */
+    protected $stringArrayMappings = ['Tuintypen'];
 }

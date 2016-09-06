@@ -32,4 +32,15 @@ namespace Realworks\Parser\Mappers;
  */
 class CVKetel extends Mapper
 {
+    /**
+     * Fields that can be mapped to string values.
+     * @var array
+     */
+    protected $stringMappings = ['CVKetelType', 'Bouwjaar', 'Brandstof', 'Eigendom'];
+
+    /**
+     * Fields that can be mapped to boolean values.
+     * @var array
+     */
+    protected $booleanMappings = ['Combiketel'];
 }

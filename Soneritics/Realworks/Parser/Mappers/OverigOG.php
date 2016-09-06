@@ -32,4 +32,25 @@ namespace Realworks\Parser\Mappers;
  */
 class OverigOG extends Mapper
 {
+    /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $objectMappings = [
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+	];
 }
