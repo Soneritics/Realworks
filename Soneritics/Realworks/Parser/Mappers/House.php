@@ -49,7 +49,7 @@ class House extends Mapper
      * @param $object
      * @param \SimpleXMLElement $data
      */
-    public function mapCustomFields($object, \SimpleXMLElement $data)
+    protected function mapCustomFields($object, \SimpleXMLElement $data)
     {
         $this->mapHouse($object, $data);
     }

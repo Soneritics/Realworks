@@ -95,25 +95,9 @@ abstract class Mapper
         $realEstateObject = "\RealEstate\{$realEstateObjectClassName}";
         $object = new $realEstateObject;
 
-        # Default mappings
-        foreach ($this->stringMappings as $string) {
-            if (isset($data->$string)) {
-                $object->$string = (string)$data->$string;
-            }
-        }
-
-        foreach ($this->integerMappings as $int) {
-            if (isset($data->$int)) {
-                $object->$int = (int)$data->$int;
-            }
-        }
-
-        foreach ($this->dateTimeMappings as $date) {
-            if (isset($data->$date)) {
-                $object->$date = (int)$data->$date;
-            }
-        }
-
+        $this->mapStrings($object, $data);
+        $this->mapIntegers($object, $data);
+        $this->mapDateTime($object, $data);
         $this->mapCustomFields($object, $data);
 
         return $object;
@@ -124,8 +108,50 @@ abstract class Mapper
      * @param $object
      * @param \SimpleXMLElement $data
      */
-    public function mapCustomFields($object, \SimpleXMLElement $data)
+    protected function mapCustomFields($object, \SimpleXMLElement $data)
     {
         // Overwrite in child class when custom fields need to be mapped
+    }
+
+    /**
+     * Map strings
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapStrings($object, \SimpleXMLElement $data)
+    {
+        foreach ($this->stringMappings as $string) {
+            if (isset($data->$string)) {
+                $object->$string = (string)$data->$string;
+            }
+        }
+    }
+
+    /**
+     * Map integers
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapIntegers($object, \SimpleXMLElement $data)
+    {
+        foreach ($this->integerMappings as $int) {
+            if (isset($data->$int)) {
+                $object->$int = (int)$data->$int;
+            }
+        }
+    }
+
+    /**
+     * Map DateTime fields
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapDateTime($object, \SimpleXMLElement $data)
+    {
+        foreach ($this->dateTimeMappings as $date) {
+            if (isset($data->$date)) {
+                $object->$date = (int)$data->$date;
+            }
+        }
     }
 }
