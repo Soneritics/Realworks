@@ -298,7 +298,6 @@ final class MapperRegister
         $this->keukenTypeMapper = new KeukenType($this);
         $this->koopMapper = new Koop($this);
         $this->koopmengvormMapper = new Koopmengvorm($this);
-        $this->mapperRegisterMapper = new MapperRegister($this);
         $this->matenEnLiggingMapper = new MatenEnLigging($this);
         $this->mediaMapper = new Media($this);
         $this->nederlandsAdresMapper = new NederlandsAdres($this);
