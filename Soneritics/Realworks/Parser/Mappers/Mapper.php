@@ -45,6 +45,12 @@ abstract class Mapper
     protected $stringMappings = [];
 
     /**
+     * Fields that can be mapped to double values.
+     * @var array
+     */
+    protected $doubleMappings = [];
+
+    /**
      * Fields that can be mapped to \DateTime values.
      * @var array
      */
@@ -103,6 +109,7 @@ abstract class Mapper
 
         $this->mapStrings($object, $data);
         $this->mapIntegers($object, $data);
+        $this->mapDoubles($object, $data);
         $this->mapBooleans($object, $data);
         $this->mapDateTime($object, $data);
         $this->mapObjects($object, $data);
@@ -146,6 +153,20 @@ abstract class Mapper
         foreach ($this->integerMappings as $int) {
             if (isset($data->$int)) {
                 $object->$int = (int)$data->$int;
+            }
+        }
+    }
+
+    /**
+     * Map doubles
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapDoubles($object, \SimpleXMLElement $data)
+    {
+        foreach ($this->doubleMappings as $double) {
+            if (isset($data->$double)) {
+                $object->$double = (double)$data->$double;
             }
         }
     }
