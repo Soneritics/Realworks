@@ -204,8 +204,6 @@ abstract class Mapper
         foreach ($this->stringArrayMappings as $stringArray) {
             $object->$stringArray = [];
             $this->getStringsFromNestedArray($data->$stringArray, $object->$stringArray);
-
-            print_r($object->$stringArray);die;
         }
     }
 
