@@ -45,6 +45,12 @@ class House extends Mapper
     protected $stringMappings = ['NVMVestigingNR', 'ObjectAfdeling', 'ObjectCompany', 'ObjectCode'];
 
     /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $objectMappings = ['Web', 'ObjectDetails', 'Wonen', 'Bouwgrond', 'OverigOG'];
+
+    /**
      * Map fields that are not default types.
      * @param $object
      * @param \SimpleXMLElement $data
@@ -56,31 +62,11 @@ class House extends Mapper
 
     /**
      * Map the XML data to the House object
-     * @param House $house
+     * @param \RealEstate\House|House $house
      * @param \SimpleXMLElement $data
      */
-    protected function mapHouse(House $house, \SimpleXMLElement $data)
+    protected function mapHouse(\RealEstate\House $house, \SimpleXMLElement $data)
     {
-        if (isset($data->Web)) {
-            $house->Web = $this->getMapperRegister()->getWebMapper()->map($data);
-        }
-
-        if (isset($data->ObjectDetails)) {
-            $house->Web = $this->getMapperRegister()->getObjectDetailsMapper()->map($data);
-        }
-
-        if (isset($data->Wonen)) {
-            $house->Web = $this->getMapperRegister()->getWonenMapper()->map($data);
-        }
-
-        if (isset($data->Bouwgrond)) {
-            $house->Web = $this->getMapperRegister()->getBouwgrondMapper()->map($data);
-        }
-
-        if (isset($data->OverigOG)) {
-            $house->Web = $this->getMapperRegister()->getOverigOGMapper()->map($data);
-        }
-
         if (!empty($data->MediaLijst)) {
             $this->processMediaList($house, $data->MediaLijst);
         }
