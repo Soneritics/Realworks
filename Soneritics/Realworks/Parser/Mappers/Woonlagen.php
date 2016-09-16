@@ -40,23 +40,23 @@ class Woonlagen extends Mapper
     protected function mapCustomFields($object, \SimpleXMLElement $data)
     {
         if (!empty($data->Kelder)) {
-			$object->Kelder = $this->getMapperRegister()->getWoonlaagMapper()->map($data->Kelder);
-		}
+            $object->Kelder = $this->getMapperRegister()->getWoonlaagMapper()->map($data->Kelder);
+        }
 
         if (!empty($data->BeganeGrondOfFlat)) {
-			$object->BeganeGrondOfFlat = $this->getMapperRegister()->getWoonlaagMapper()->map($data->BeganeGrondOfFlat);
-		}
+            $object->BeganeGrondOfFlat = $this->getMapperRegister()->getWoonlaagMapper()->map($data->BeganeGrondOfFlat);
+        }
 
         if (!empty($data->Verdieping)) {
-			$object->Verdieping = $this->getMapperRegister()->getWoonlaagMapper()->map($data->Verdieping);
-		}
+            $object->Verdieping = $this->getMapperRegister()->getWoonlaagMapper()->map($data->Verdieping);
+        }
 
         if (!empty($data->Zolder)) {
-			$object->Zolder = $this->getMapperRegister()->getZolderVlieringMapper()->map($data->Zolder);
-		}
+            $object->Zolder = $this->getMapperRegister()->getZolderVlieringMapper()->map($data->Zolder);
+        }
 
         if (!empty($data->Vliering)) {
-			$object->Vliering = $this->getMapperRegister()->getZolderVlieringMapper()->map($data->Vliering);
-		}
+            $object->Vliering = $this->getMapperRegister()->getZolderVlieringMapper()->map($data->Vliering);
+        }
     }
 }

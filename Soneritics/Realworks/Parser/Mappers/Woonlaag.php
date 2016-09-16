@@ -52,15 +52,15 @@ class Woonlaag extends Mapper
     protected function mapCustomFields($object, \SimpleXMLElement $data)
     {
         if (!empty($data->Woonkamer)) {
-			$object->Woonkamer = $this->getMapperRegister()->getWoonkamerTypeMapper()->map($data->Woonkamer);
-		}
+            $object->Woonkamer = $this->getMapperRegister()->getWoonkamerTypeMapper()->map($data->Woonkamer);
+        }
 
         if (!empty($data->Keuken)) {
-			$object->Keuken = $this->getMapperRegister()->getKeukenTypeMapper()->map($data->Keuken);
-		}
+            $object->Keuken = $this->getMapperRegister()->getKeukenTypeMapper()->map($data->Keuken);
+        }
 
         if (!empty($data->Badkamer)) {
-			$object->Badkamer = $this->getMapperRegister()->getBadkamerTypeMapper()->map($data->Badkamer);
-		}
+            $object->Badkamer = $this->getMapperRegister()->getBadkamerTypeMapper()->map($data->Badkamer);
+        }
     }
 }

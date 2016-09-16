@@ -42,7 +42,13 @@ class ObjectDetails extends Mapper
      * Fields that can be mapped to string values.
      * @var array
      */
-    protected $stringMappings = ['Aanvaarding', 'ToelichtingAanvaarding', 'ObjectAanmelding', 'Bouwvorm', 'Aanbiedingstekst'];
+    protected $stringMappings = [
+        'Aanvaarding',
+        'ToelichtingAanvaarding',
+        'ObjectAanmelding',
+        'Bouwvorm',
+        'Aanbiedingstekst'
+    ];
 
     /**
      * Fields that can be mapped to \DateTime values.
@@ -70,19 +76,31 @@ class ObjectDetails extends Mapper
     protected function mapCustomFields($object, \SimpleXMLElement $data)
     {
         if (!empty($data->Adres->Nederland)) {
-            $object->Adres = $this->getMapperRegister()->getNederlandsAdresMapper()->map($data->Adres->Nederland);
+            $object->Adres = $this
+                ->getMapperRegister()
+                ->getNederlandsAdresMapper()
+                ->map($data->Adres->Nederland);
         }
 
         if (!empty($data->Adres->Internationaal)) {
-            $object->Adres = $this->getMapperRegister()->getInternationaalAdresMapper()->map($data->Adres->Internationaal);
+            $object->Adres = $this
+                ->getMapperRegister()
+                ->getInternationaalAdresMapper()
+                ->map($data->Adres->Internationaal);
         }
 
         if (!empty($data->CombinatieObject->BOGObject)) {
-            $object->CombinatieObject = $this->getMapperRegister()->getbogObjectMapper()->map($data->CombinatieObject->BOGObject);
+            $object->CombinatieObject = $this
+                ->getMapperRegister()
+                ->getbogObjectMapper()
+                ->map($data->CombinatieObject->BOGObject);
         }
 
         if (!empty($data->CombinatieObject->AgrarischBedrijf)) {
-            $object->CombinatieObject = $this->getMapperRegister()->getAgrarischBedrijfMapper()->map($data->CombinatieObject->AgrarischBedrijf);
+            $object->CombinatieObject = $this
+                ->getMapperRegister()
+                ->getAgrarischBedrijfMapper()
+                ->map($data->CombinatieObject->AgrarischBedrijf);
         }
     }
 }
