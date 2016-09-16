@@ -36,7 +36,13 @@ class MatenEnLigging extends Mapper
      * Fields that can be mapped to integer values.
      * @var array
      */
-    protected $integerMappings = ['Inhoud', 'GebruiksoppervlakteWoonfunctie', 'GebruiksoppervlakteOverigeFuncties', 'BuitenruimtesGebouwgebondenOfVrijstaand', 'PerceelOppervlakte'];
+    protected $integerMappings = [
+        'Inhoud',
+        'GebruiksoppervlakteWoonfunctie',
+        'GebruiksoppervlakteOverigeFuncties',
+        'BuitenruimtesGebouwgebondenOfVrijstaand',
+        'PerceelOppervlakte'
+    ];
 
     /**
      * Arrays that contain strings.
