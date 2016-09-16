@@ -75,11 +75,11 @@ class ObjectDetails extends Mapper
      */
     protected function mapCustomFields($object, \SimpleXMLElement $data)
     {
-        if (!empty($data->Adres->Nederland)) {
+        if (!empty($data->Adres->Nederlands)) {
             $object->Adres = $this
                 ->getMapperRegister()
                 ->getNederlandsAdresMapper()
-                ->map($data->Adres->Nederland);
+                ->map($data->Adres->Nederlands);
         }
 
         if (!empty($data->Adres->Internationaal)) {

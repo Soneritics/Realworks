@@ -56,4 +56,9 @@ class OverigOGObject
      * @var string (max 2.000 characters)
      */
     public $Toelichting;
+
+    /**
+     * @var string Not in the XML but added manually by the parser
+     */
+    public $Type;
 }

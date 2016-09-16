@@ -33,20 +33,48 @@ namespace Realworks\Parser\Mappers;
 class WonenDetails extends Mapper
 {
     /**
-     * Fields that can be mapped to integer values.
-     * @var array
-     */
-    protected $integerMappings = ['', '', ''];
-
-    /**
      * Fields that can be mapped to string values.
      * @var array
      */
-    protected $stringMappings = ['', '', ''];
+    protected $stringMappings = ['Toelichting'];
 
     /**
      * Fields that can be mapped to RealEstate objects.
      * @var array
      */
-    protected $objectMappings = ['', '', ''];
+    protected $objectMappings = [
+        'Bestemming',
+        'MatenEnLigging',
+        'Bouwjaar',
+        'SchuurBerging',
+        'Diversen',
+        'Energielabel',
+        'Installatie',
+        'Tuin',
+        'Hoofdtuin',
+        'Garage',
+        'Parkeren'
+    ];
+
+    /**
+     * Arrays that contain strings.
+     * @var array
+     */
+    protected $stringArrayMappings = ['Keurmerken', 'VoorzieningenWonen'];
+
+    /**
+     * Map fields that are not default types.
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapCustomFields($object, \SimpleXMLElement $data)
+    {
+        if (!empty($data->Onderhoud)) {
+            foreach ((array)$data->Onderhoud as $name => $onderhoud) {
+                $onderhoudObject = $this->getMapperRegister()->getOnderhoudMapper()->map($onderhoud);
+                $onderhoudObject->Name = $name;
+                $object->Onderhoud[] = $onderhoudObject;
+            }
+        }
+    }
 }

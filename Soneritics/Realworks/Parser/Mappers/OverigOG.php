@@ -36,21 +36,31 @@ class OverigOG extends Mapper
      * Fields that can be mapped to RealEstate objects.
      * @var array
      */
-    protected $objectMappings = [
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
+    protected $ogMappings = [
+        'InpandigeGarage',
+        'Garagebox',
+        'Parkeerkelder',
+        'Parkeerplaats',
+        'Berging',
+        'Woonwagenstandplaats',
+        'Stacaravanstandplaats',
+        'Ligplaats',
+        'Onderstuk',
+        'Opslagruimte'
     ];
+
+    /**
+     * Map fields that are not default types.
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapCustomFields($object, \SimpleXMLElement $data)
+    {
+        foreach ($this->ogMappings as $ogMapping) {
+            if (!empty($data->$ogMapping)) {
+                $object->$ogMapping = $this->getMapperRegister()->getOverigOGObjectMapper()->map($data->$ogMapping);
+                $object->$ogMapping->Type = $ogMapping;
+            }
+        }
+    }
 }
