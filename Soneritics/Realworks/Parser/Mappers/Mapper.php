@@ -134,11 +134,11 @@ abstract class Mapper
      * @param $object
      * @param \SimpleXMLElement $data
      */
-    protected function mapStrings($object, \SimpleXMLElement $data)
+    protected function mapStrings(&$object, \SimpleXMLElement $data)
     {
         foreach ($this->stringMappings as $string) {
             if (isset($data->$string)) {
-                $object->$string = (string)$data->$string;
+                $object->$string = trim($data->$string);
             }
         }
     }
@@ -152,7 +152,7 @@ abstract class Mapper
     {
         foreach ($this->integerMappings as $int) {
             if (isset($data->$int)) {
-                $object->$int = (int)$data->$int;
+                $object->$int = (int)trim($data->$int);
             }
         }
     }
@@ -166,7 +166,7 @@ abstract class Mapper
     {
         foreach ($this->doubleMappings as $double) {
             if (isset($data->$double)) {
-                $object->$double = (double)$data->$double;
+                $object->$double = (double)trim($data->$double);
             }
         }
     }
@@ -180,7 +180,7 @@ abstract class Mapper
     {
         foreach ($this->dateTimeMappings as $date) {
             if (isset($data->$date)) {
-                $object->$date = (int)$data->$date;
+                $object->$date = new \DateTime(trim($data->$date));
             }
         }
     }
@@ -193,9 +193,9 @@ abstract class Mapper
     protected function mapBooleans($object, \SimpleXMLElement $data)
     {
         $boolValues = ['ja', '1', 'yes', 'true'];
-        foreach ($this->stringMappings as $string) {
-            if (isset($data->$string)) {
-                $object->$string = in_array(strtolower($data->$string), $boolValues);
+        foreach ($this->booleanMappings as $bool) {
+            if (isset($data->$bool)) {
+                $object->$bool = in_array(strtolower(trim($data->$bool)), $boolValues);
             }
         }
     }
@@ -239,7 +239,7 @@ abstract class Mapper
             if (!is_string($item)) {
                 $this->getStringsFromNestedArray($item, $strings);
             } else {
-                $strings[] = (string)$item;
+                $strings[] = trim($item);
             }
         }
     }
