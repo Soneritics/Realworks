@@ -113,6 +113,11 @@ final class MapperRegister
     /**
      * @var Mapper
      */
+    private $BOGMapper;
+
+    /**
+     * @var Mapper
+     */
     private $huurMapper;
 
     /**
@@ -270,6 +275,60 @@ final class MapperRegister
      */
     private $zolderVlieringMapper;
 
+    /**
+     * @var Mapper
+     */
+    private $gebouwMapper;
+
+    /**
+     * @var Mapper
+     */
+    private $gebouwDetailsMapper;
+
+    /**
+     * @var Mapper
+     */
+    private $kantoorruimteMapper;
+
+    /**
+     * @var Mapper
+     */
+    private $prijsSpecificatieMapper;
+
+    /**
+     * @var ProjectDetails
+     */
+    private $projectDetailsMapper;
+
+    /**
+     * @var BouwType
+     */
+    private $bouwTypeMapper;
+
+    /**
+     * @var BouwTypeDetails
+     */
+    private $bouwTypeDetailsMapper;
+
+    /**
+     * @var FinancieleGegevens
+     */
+    private $financieleGegevensMapper;
+
+    /**
+     * @var Maten
+     */
+    private $matenMapper;
+
+    /**
+     * @var Presentatie
+     */
+    private $presentatieMapper;
+
+    /**
+     * @var ProjectMaten
+     */
+    private $projectMatenMapper;
 
     /**
      * Set up the mappers to use.
@@ -279,7 +338,7 @@ final class MapperRegister
         $this->afmetingenMapper = new Afmetingen($this);
         $this->agrarischBedrijfMapper = new AgrarischBedrijf($this);
         $this->appartementMapper = new Appartement($this);
-        $this->bogObjectMapper = new bogObject($this);
+        $this->bogObjectMapper = new BOGObject($this);
         $this->badkamerTypeMapper = new BadkamerType($this);
         $this->bestemmingMapper = new Bestemming($this);
         $this->bouwgrondMapper = new Bouwgrond($this);
@@ -291,6 +350,7 @@ final class MapperRegister
         $this->garageMapper = new Garage($this);
         $this->hoofdtuinMapper = new Hoofdtuin($this);
         $this->houseMapper = new House($this);
+        $this->BOGMapper = new BOG($this);
         $this->huurMapper = new Huur($this);
         $this->installatieMapper = new Installatie($this);
         $this->internationaalAdresMapper = new InternationaalAdres($this);
@@ -322,6 +382,18 @@ final class MapperRegister
         $this->woonlaagMapper = new Woonlaag($this);
         $this->woonlagenMapper = new Woonlagen($this);
         $this->zolderVlieringMapper = new ZolderVliering($this);
+        $this->gebouwMapper = new Gebouw($this);
+        $this->BOGAdresMapper = new BOGAdres($this);
+        $this->gebouwDetailsMapper = new GebouwDetails($this);
+        $this->kantoorruimteMapper = new Kantoorruimte($this);
+        $this->prijsSpecificatieMapper = new PrijsSpecificatie($this);
+        $this->projectDetailsMapper = new ProjectDetails($this);
+        $this->bouwTypeMapper = new BouwType($this);
+        $this->bouwTypeDetailsMapper = new BouwTypeDetails($this);
+        $this->financieleGegevensMapper = new FinancieleGegevens($this);
+        $this->matenMapper = new Maten($this);
+        $this->presentatieMapper = new Presentatie($this);
+        $this->projectMatenMapper = new ProjectMaten($this);
     }
 
     /**
@@ -591,6 +663,24 @@ final class MapperRegister
     public function setHouseMapper(Mapper $houseMapper)
     {
         $this->houseMapper = $houseMapper;
+        return $this;
+    }
+
+    /**
+     * @return Mapper
+     */
+    public function getBOGMapper()
+    {
+        return $this->BOGMapper;
+    }
+
+    /**
+     * @param Mapper $BOGMapper
+     * @return MapperRegister
+     */
+    public function setBOGMapper(Mapper $BOGMapper)
+    {
+        $this->houseMapper = $BOGMapper;
         return $this;
     }
 
@@ -1167,6 +1257,222 @@ final class MapperRegister
     public function setZolderVlieringMapper(Mapper $zolderVlieringMapper)
     {
         $this->zolderVlieringMapper = $zolderVlieringMapper;
+        return $this;
+    }
+
+    /**
+     * @return Mapper
+     */
+    public function getGebouwMapper()
+    {
+        return $this->gebouwMapper;
+    }
+
+    /**
+     * @param Mapper $gebouwMapper
+     * @return MapperRegister
+     */
+    public function setGebouwMapper(Mapper $gebouwMapper)
+    {
+        $this->gebouwMapper = $gebouwMapper;
+        return $this;
+    }
+
+    /**
+     * @return Mapper
+     */
+    public function getGebouwDetailsMapper()
+    {
+        return $this->gebouwDetailsMapper;
+    }
+
+    /**
+     * @param Mapper $gebouwDetailsMapper
+     * @return MapperRegister
+     */
+    public function setGebouwDetailsMapper(Mapper $gebouwDetailsMapper)
+    {
+        $this->gebouwDetailsMapper = $gebouwDetailsMapper;
+        return $this;
+    }
+
+    /**
+     * @return Mapper
+     */
+    public function getKantoorruimteMapper()
+    {
+        return $this->kantoorruimteMapper;
+    }
+
+    /**
+     * @param Mapper $kantoorruimteMapper
+     * @return MapperRegister
+     */
+    public function setKantoorruimteMapper(Mapper $kantoorruimteMapper)
+    {
+        $this->kantoorruimteMapper = $kantoorruimteMapper;
+        return $this;
+    }
+
+    /**
+     * @return Mapper
+     */
+    public function getBOGAdresMapper()
+    {
+        return $this->BOGAdresMapper;
+    }
+
+    /**
+     * @param Mapper $BOGAdresMapper
+     * @return MapperRegister
+     */
+    public function setBOGAdresMapper(Mapper $BOGAdresMapper)
+    {
+        $this->BOGAdresMapper = $BOGAdresMapper;
+        return $this;
+    }
+
+    /**
+     * @return Mapper
+     */
+    public function getPrijsSpecificatieMapper()
+    {
+        return $this->prijsSpecificatieMapper;
+    }
+
+    /**
+     * @param Mapper $prijsSpecificatieMapper
+     * @return MapperRegister
+     */
+    public function setPrijsSpecificatieMapper($prijsSpecificatieMapper)
+    {
+        $this->prijsSpecificatieMapper = $prijsSpecificatieMapper;
+        return $this;
+    }
+
+    /**
+     * @return ProjectDetails
+     */
+    public function getProjectDetailsMapper()
+    {
+        return $this->projectDetailsMapper;
+    }
+
+    /**
+     * @param ProjectDetails $projectDetailsMapper
+     * @return MapperRegister
+     */
+    public function setProjectDetailsMapper($projectDetailsMapper)
+    {
+        $this->projectDetailsMapper = $projectDetailsMapper;
+        return $this;
+    }
+
+    /**
+     * @return BouwType
+     */
+    public function getBouwTypeMapper()
+    {
+        return $this->bouwTypeMapper;
+    }
+
+    /**
+     * @param BouwType $bouwTypeMapper
+     * @return MapperRegister
+     */
+    public function setBouwTypeMapper($bouwTypeMapper)
+    {
+        $this->bouwTypeMapper = $bouwTypeMapper;
+        return $this;
+    }
+
+    /**
+     * @return BouwTypeDetails
+     */
+    public function getBouwTypeDetailsMapper()
+    {
+        return $this->bouwTypeDetailsMapper;
+    }
+
+    /**
+     * @param BouwTypeDetails $bouwTypeDetailsMapper
+     * @return MapperRegister
+     */
+    public function setBouwTypeDetailsMapper($bouwTypeDetailsMapper)
+    {
+        $this->bouwTypeDetailsMapper = $bouwTypeDetailsMapper;
+        return $this;
+    }
+
+    /**
+     * @return FinancieleGegevens
+     */
+    public function getFinancieleGegevensMapper()
+    {
+        return $this->financieleGegevensMapper;
+    }
+
+    /**
+     * @param FinancieleGegevens $financieleGegevensMapper
+     * @return MapperRegister
+     */
+    public function setFinancieleGegevensMapper($financieleGegevensMapper)
+    {
+        $this->financieleGegevensMapper = $financieleGegevensMapper;
+        return $this;
+    }
+
+    /**
+     * @return Maten
+     */
+    public function getMatenMapper()
+    {
+        return $this->matenMapper;
+    }
+
+    /**
+     * @param Maten $matenMapper
+     * @return MapperRegister
+     */
+    public function setMatenMapper($matenMapper)
+    {
+        $this->matenMapper = $matenMapper;
+        return $this;
+    }
+
+    /**
+     * @return Presentatie
+     */
+    public function getPresentatieMapper()
+    {
+        return $this->presentatieMapper;
+    }
+
+    /**
+     * @param Presentatie $presentatieMapper
+     * @return MapperRegister
+     */
+    public function setPresentatieMapper($presentatieMapper)
+    {
+        $this->presentatieMapper = $presentatieMapper;
+        return $this;
+    }
+
+    /**
+     * @return ProjectMaten
+     */
+    public function getProjectMatenMapper()
+    {
+        return $this->projectMatenMapper;
+    }
+
+    /**
+     * @param ProjectMaten $projectMatenMapper
+     * @return MapperRegister
+     */
+    public function setProjectMatenMapper($projectMatenMapper)
+    {
+        $this->projectMatenMapper = $projectMatenMapper;
         return $this;
     }
 }

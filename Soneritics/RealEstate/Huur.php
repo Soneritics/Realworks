@@ -46,4 +46,9 @@ class Huur
      * @var string|null
      */
     public $HuurSpecificatie;
+
+    /**
+     * @var PrijsSpecificatie
+     */
+    public $PrijsSpecificatie;
 }

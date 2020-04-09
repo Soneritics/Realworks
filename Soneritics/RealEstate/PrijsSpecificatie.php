@@ -22,23 +22,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Realworks\RealEstateType;
-
-use Realworks\RoleInterface\IString;
+namespace RealEstate;
 
 /**
- * Class Nieuwbouw
- * @package Realworks\RealEstateType
+ * Class PrijsSpecificatie
+ *
+ * @package RealEstate
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-final class Nieuwbouw implements IString, IRealEstateType
+class PrijsSpecificatie
 {
     /**
-     * Get the name of the real estate type for use in the Downloader.
-     * @return string
+     * @var double
      */
-    public function __toString()
-    {
-        return 'Nieuwbouw';
-    }
+    public $Prijs;
+
+    /**
+     * @var double
+     */
+    public $BTWTarief;
+
+    /**
+     * @var bool
+     */
+    public $BTWBelast;
 }

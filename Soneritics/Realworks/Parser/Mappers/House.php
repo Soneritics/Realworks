@@ -57,7 +57,7 @@ class House extends Mapper
      */
     protected function mapCustomFields($object, \SimpleXMLElement $data)
     {
-        $this->mapHouse($object, $data);
+        $this->mapMedia($object, $data);
     }
 
     /**
@@ -65,7 +65,7 @@ class House extends Mapper
      * @param \RealEstate\House|House $house
      * @param \SimpleXMLElement $data
      */
-    protected function mapHouse(\RealEstate\House $house, \SimpleXMLElement $data)
+    protected function mapMedia(\RealEstate\House $house, \SimpleXMLElement $data)
     {
         if (!empty($data->MediaLijst)) {
             $this->processMediaList($house, $data->MediaLijst);

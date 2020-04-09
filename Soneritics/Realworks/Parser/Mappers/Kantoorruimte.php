@@ -22,23 +22,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Realworks\RealEstateType;
-
-use Realworks\RoleInterface\IString;
+namespace Realworks\Parser\Mappers;
 
 /**
- * Class Nieuwbouw
- * @package Realworks\RealEstateType
+ * Class Kantoorruimte
+ *
+ * @package Realworks\Parser\Mappers
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-final class Nieuwbouw implements IString, IRealEstateType
+class Kantoorruimte extends Mapper
 {
     /**
-     * Get the name of the real estate type for use in the Downloader.
-     * @return string
+     * Fields that can be mapped to integer values.
+     * @var array
      */
-    public function __toString()
-    {
-        return 'Nieuwbouw';
-    }
+    protected $integerMappings = ['Oppervlakte', 'InUnitsVanaf', 'Verdiepingen'];
+
+    /**
+     * Arrays that contain strings.
+     * @var array
+     */
+    protected $stringArrayMappings = ['Opleveringsniveau'];
 }

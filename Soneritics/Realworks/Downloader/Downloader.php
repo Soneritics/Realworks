@@ -136,7 +136,7 @@ class Downloader
     {
         $url = sprintf(
             'https://xml-publish.realworks.nl/servlets/ogexport?koppeling=WEBSITE&og=%s&user=%s&password=%s',
-            $realEstateType,
+            strtoupper($realEstateType),
             $username,
             $password
         );

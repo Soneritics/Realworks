@@ -22,23 +22,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Realworks\RealEstateType;
-
-use Realworks\RoleInterface\IString;
+namespace RealEstate;
 
 /**
- * Class Nieuwbouw
- * @package Realworks\RealEstateType
+ * Class Gebouw
+ *
+ * @package RealEstate
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-final class Nieuwbouw implements IString, IRealEstateType
+class Gebouw
 {
     /**
-     * Get the name of the real estate type for use in the Downloader.
-     * @return string
+     * @var GebouwDetails
      */
-    public function __toString()
-    {
-        return 'Nieuwbouw';
-    }
+    public $GebouwDetails;
+
+    /**
+     * @var Kantoorruimte
+     */
+    public $Kantoorruimte;
 }

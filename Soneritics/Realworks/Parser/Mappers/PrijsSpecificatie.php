@@ -22,23 +22,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Realworks\RealEstateType;
-
-use Realworks\RoleInterface\IString;
+namespace Realworks\Parser\Mappers;
 
 /**
- * Class Nieuwbouw
- * @package Realworks\RealEstateType
+ * Class PrijsSpecificatie
+ *
+ * @package Realworks\Parser\Mappers
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-final class Nieuwbouw implements IString, IRealEstateType
+class PrijsSpecificatie extends Mapper
 {
     /**
-     * Get the name of the real estate type for use in the Downloader.
-     * @return string
+     * Fields that can be mapped to double values.
+     * @var array
      */
-    public function __toString()
-    {
-        return 'Nieuwbouw';
-    }
+    protected $doubleMappings = ['Prijs', 'BTWTarief'];
+
+    /**
+     * Fields that can be mapped to boolean values.
+     * @var array
+     */
+    protected $booleanMappings = ['BTWBelast'];
 }

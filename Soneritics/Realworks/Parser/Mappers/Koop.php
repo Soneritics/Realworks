@@ -48,5 +48,5 @@ class Koop extends Mapper
      * Fields that can be mapped to RealEstate objects.
      * @var array
      */
-    protected $objectMappings = ['WOZ'];
+    protected $objectMappings = ['WOZ', 'PrijsSpecificatie'];
 }

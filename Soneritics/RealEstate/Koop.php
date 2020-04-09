@@ -56,4 +56,9 @@ class Koop
      * @var WOZ|null
      */
     public $WOZ;
+
+    /**
+     * @var PrijsSpecificatie
+     */
+    public $PrijsSpecificatie;
 }
