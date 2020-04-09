@@ -41,6 +41,22 @@ class Nieuwbouw extends Parser
      */
     protected function parseData($object)
     {
-        // TODO: Implement parseData() method.
+        return $this->parseXMLObjects($object);
+    }
+
+    /**
+     * Parse a SimpleXMLElement to a Real Estate object.
+     * @param \SimpleXMLElement $objects
+     * @return array
+     */
+    protected function parseXMLObjects(\SimpleXMLElement $objects)
+    {
+        if (!empty($objects->Project)) {
+            foreach ($objects->Project as $project) {
+                $result[] = $this->mapperRegister->getProjectMapper()->map($project);
+            }
+        }
+
+        return $result;
     }
 }

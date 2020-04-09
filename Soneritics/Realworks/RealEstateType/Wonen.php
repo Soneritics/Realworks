@@ -39,6 +39,6 @@ final class Wonen implements IString, IRealEstateType
      */
     public function __toString()
     {
-        return 'WONEN';
+        return 'Wonen';
     }
 }

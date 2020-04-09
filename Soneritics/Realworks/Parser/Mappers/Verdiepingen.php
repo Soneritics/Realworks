@@ -36,5 +36,5 @@ class Verdiepingen extends Mapper
      * Fields that can be mapped to integer values.
      * @var array
      */
-    protected $integerMappings = ['Aantal', 'AantalKamers', 'AantalSlaapkamers'];
+    protected $integerMappings = ['Aantal', 'AantalKamers', 'AantalSlaapKamers'];
 }

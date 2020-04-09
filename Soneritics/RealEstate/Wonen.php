@@ -51,4 +51,14 @@ class Wonen
      * @var Woonlagen
      */
     public $Woonlagen;
+
+    /**
+     * @var Woonhuis
+     */
+    public $Woonhuis;
+
+    /**
+     * @var Appartement
+     */
+    public $Appartement;
 }

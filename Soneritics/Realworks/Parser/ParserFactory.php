@@ -42,7 +42,7 @@ class ParserFactory
     private $customParsers = [];
 
     /**
-     * @var MApperRegister
+     * @var MapperRegister
      */
     private $mapperRegister;
 

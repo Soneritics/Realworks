@@ -36,11 +36,25 @@ class NederlandsAdres extends Mapper
      * Fields that can be mapped to integer values.
      * @var array
      */
-    protected $integerMappings = ['Huisnummer'];
+    //protected $integerMappings = ['Huisnummer'];
 
     /**
      * Fields that can be mapped to string values.
      * @var array
      */
     protected $stringMappings = ['Woonplaats', 'Land', 'Straatnaam', 'HuisnummerToevoeging', 'Postcode', 'Gemeente'];
+
+    /**
+     * Map fields that are not default types.
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapCustomFields($object, \SimpleXMLElement $data)
+    {
+        if (isset($data->Huisnummer->Hoofdnummer)) {
+            $object->Huisnummer = (int)trim($data->Huisnummer->Hoofdnummer);
+        } elseif (isset($data->Huisnummer)) {
+            $object->Huisnummer = (int)trim($data->Huisnummer);
+        }
+    }
 }

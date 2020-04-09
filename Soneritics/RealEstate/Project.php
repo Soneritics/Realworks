@@ -30,6 +30,15 @@ namespace RealEstate;
  * @package RealEstate
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class Project
+class Project extends House
 {
+    /**
+     * @var ProjectDetails
+     */
+    public $ProjectDetails;
+
+    /**
+     * @var array of BouwType
+     */
+    public $BouwType = [];
 }

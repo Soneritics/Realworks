@@ -22,23 +22,31 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Realworks\RealEstateType;
-
-use Realworks\RoleInterface\IString;
+namespace Realworks\Parser\Mappers;
 
 /**
- * Class Nieuwbouw
- * @package Realworks\RealEstateType
+ * Class BOGAdres
+ *
+ * @package Realworks\Parser\Mappers
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-final class Nieuwbouw implements IString, IRealEstateType
+class BOGAdres extends Mapper
 {
     /**
-     * Get the name of the real estate type for use in the Downloader.
-     * @return string
+     * Fields that can be mapped to string values.
+     * @var array
      */
-    public function __toString()
+    protected $stringMappings = ['Woonplaats', 'Land', 'Straatnaam', 'Postcode', 'Gemeente'];
+
+    /**
+     * Map fields that are not default types.
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapCustomFields($object, \SimpleXMLElement $data)
     {
-        return 'Nieuwbouw';
+        if (!empty($data->Huisnummer->Hoofdnummer)) {
+            $object->Huisnummer = (int)$data->Huisnummer->Hoofdnummer;
+        }
     }
 }

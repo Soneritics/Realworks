@@ -22,23 +22,46 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Realworks\RealEstateType;
-
-use Realworks\RoleInterface\IString;
+namespace Realworks\Parser\Mappers;
 
 /**
- * Class Nieuwbouw
- * @package Realworks\RealEstateType
+ * Class ProjectDetails
+ *
+ * @package Realworks\Parser\Mappers
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-final class Nieuwbouw implements IString, IRealEstateType
+class ProjectDetails extends Mapper
 {
     /**
-     * Get the name of the real estate type for use in the Downloader.
-     * @return string
+     * Fields that can be mapped to string values.
+     * @var array
      */
-    public function __toString()
+    protected $stringMappings = ['Projectnaam'];
+
+    /**
+     * Fields that can be mapped to \DateTime values.
+     * @var array
+     */
+    protected $dateTimeMappings = ['DatumInvoer', 'DatumWijziging'];
+
+    /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $objectMappings = ['Maten', 'Presentatie', 'FinancieleGegevens'];
+
+    /**
+     * Map fields that are not default types.
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapCustomFields($object, \SimpleXMLElement $data)
     {
-        return 'Nieuwbouw';
+        $adressen = ['Adres'];
+        foreach ($adressen as $adres) {
+            if (isset($data->$adres)) {
+                $object->$adres = $this->getMapperRegister()->getNederlandsAdresMapper()->map($data->$adres);
+            }
+        }
     }
 }

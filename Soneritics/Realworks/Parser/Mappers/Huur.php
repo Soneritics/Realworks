@@ -43,4 +43,10 @@ class Huur extends Mapper
      * @var array
      */
     protected $stringMappings = ['HuurConditie', 'HuurSpecificatie'];
+
+    /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $objectMappings = ['PrijsSpecificatie'];
 }

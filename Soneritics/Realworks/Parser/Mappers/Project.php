@@ -30,6 +30,52 @@ namespace Realworks\Parser\Mappers;
  * @package Realworks\Parser\Mappers
  * @author Jordi Jolink <mail@jordijolink.nl>
  */
-class Project extends Mapper
+class Project extends House
 {
+    /**
+     * Fields that can be mapped to RealEstate objects.
+     * @var array
+     */
+    protected $objectMappings = ['Web', 'ProjectDetails', 'Bouwgrond', 'OverigOG'];
+
+    /**
+     * Map fields that are not default types.
+     * @param $object
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapCustomFields($object, \SimpleXMLElement $data)
+    {
+        $dataArray = (array)$data;
+        foreach ($dataArray['BouwType'] as $item) {
+            $object->BouwType[] = $this->getMapperRegister()->getBouwTypeMapper()->map($item);
+        }
+
+        $this->mapMedia($object, $data);
+    }
+
+    /**
+     * Map the XML data to the House object
+     * @param \RealEstate\House|House $house
+     * @param \SimpleXMLElement $data
+     */
+    protected function mapMedia(\RealEstate\House $house, \SimpleXMLElement $data)
+    {
+        if (!empty($data->MediaLijst)) {
+            $this->processMediaList($house, $data->MediaLijst);
+        }
+    }
+
+    /**
+     * Process the media list
+     * @param \RealEstate\House $house
+     * @param \SimpleXMLElement $mediaList
+     */
+    protected function processMediaList(\RealEstate\House $house, \SimpleXMLElement $mediaList)
+    {
+        if (!empty($mediaList->Media)) {
+            foreach ($mediaList->Media as $media) {
+                $house->MediaLijst[] = $this->getMapperRegister()->getMediaMapper()->map($media);
+            }
+        }
+    }
 }

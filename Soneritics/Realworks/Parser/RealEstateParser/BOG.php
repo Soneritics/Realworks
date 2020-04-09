@@ -41,6 +41,22 @@ class BOG extends Parser
      */
     protected function parseData($object)
     {
-        // TODO: Implement parseData() method.
+        return $this->parseXMLObjects($object);
+    }
+
+    /**
+     * Parse a SimpleXMLElement to a Real Estate object.
+     * @param \SimpleXMLElement $objects
+     * @return array
+     */
+    protected function parseXMLObjects(\SimpleXMLElement $objects)
+    {
+        if (!empty($objects->Object)) {
+            foreach ($objects->Object as $object) {
+                $result[] = $this->mapperRegister->getBOGMapper()->map($object);
+            }
+        }
+
+        return $result;
     }
 }

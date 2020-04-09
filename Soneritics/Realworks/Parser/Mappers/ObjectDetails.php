@@ -89,6 +89,13 @@ class ObjectDetails extends Mapper
                 ->map($data->Adres->Internationaal);
         }
 
+        if (!empty($data->Adres->Straatnaam)) {
+            $object->Adres = $this
+                ->getMapperRegister()
+                ->getBOGAdresMapper()
+                ->map($data->Adres);
+        }
+
         if (!empty($data->CombinatieObject->BOGObject)) {
             $object->CombinatieObject = $this
                 ->getMapperRegister()

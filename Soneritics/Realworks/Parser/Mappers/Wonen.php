@@ -36,5 +36,5 @@ class Wonen extends Mapper
      * Fields that can be mapped to RealEstate objects.
      * @var array
      */
-    protected $objectMappings = ['WonenDetails', 'WoningType', 'Verdiepingen', 'Woonlagen'];
+    protected $objectMappings = ['WonenDetails', 'WoningType', 'Verdiepingen', 'Woonlagen', 'Woonhuis', 'Appartement'];
 }
